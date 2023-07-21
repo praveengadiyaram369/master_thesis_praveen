@@ -1,0 +1,100 @@
+\documentclass[master,twoside,extern,palatino]{rgseThesis}
+
+% für "lorem ipsum" Blindtext - sollte bei echten Arbeiten natürlich raus ;-)
+\usepackage{lipsum}
+\usepackage{makecell}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcommand{\mycomment}[1]{}
+% Angaben für die Titelseite
+
+\usepackage{acronym}[sorting]
+\usepackage{hyperref}
+\usepackage{lastpage}
+
+
+\usepackage{xcolor}
+\usepackage[vlined, ruled, lined, linesnumbered, commentsnumbered, longend]{algorithm2e}
+
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+
+\author{Gadiyaram, Sri Sai Praveen}
+% \studiengang{Web and Data Science} % Default ist Informatik, bei Proposals ignoriert
+
+\title{Efficient semantic sub-topic retrieval and evaluation from long text documents.}
+
+\supervisor{m}{Prof. Dr. Jan Jürjens} % Default ist Jan Jürjens
+\supervisorInfo{Institute for Software Technology} % Default ist Institut für Softwaretechnik
+
+\secondSupervisor{w}{MSc. Katharina Großer}
+\secondSupervisorInfo{Institute for Software Technology}
+
+\externLogo{7cm}{logos/fkie} % optional Logo des externen Partners
+\externName{Informationstechnik für Führungssysteme (ITF)} % optional Untertitel des Logos
+
+\usepackage[backend=biber]{biblatex}
+% Literatur-Datenbank
+\addbibresource{literature.bib}
+\DeclareUnicodeCharacter{2009}{\,} 
+
+% Tiefe des Inhaltsverzeichnisses; 1: bis section (empfohlen), 2: bis subsection
+\setcounter{tocdepth}{1} 
+
+\begin{document}
+
+    % Umschalten der Sprache für englische Rubrikbezeichnungen (möglich: english, ngerman)
+    \selectlanguage{english}
+   % \pagenumbering{roman}
+       \pagenumbering{arabic}
+
+    % Titelseite und Erklärung
+    \maketitle
+
+    \include{content/abstract}
+
+    % Kurzfassung
+   % \include{content/abstract}
+
+    \tableofcontents
+
+    \clearpage
+     \section*{Acronyms}
+	\input{acro_list}
+	    \clearpage
+
+    % Hier kommt jetzt der eigentliche Text der Arbeit
+    
+    % Du solltest mit \include für die einzelnen Kapitel arbeiten,
+    % damit die Dokumente nicht zu lang werden
+
+        \include{content/introduction}
+    
+         \include{content/problem_description}
+       
+        \include{content/background}
+
+        \include{content/related_work}
+    
+        \include{content/proposed_methodology}
+    
+        \include{content/experiment_setup}
+
+        \include{content/experiment_results}
+    
+        \include{content/conclusion}
+
+    \include{content/appendix}
+    % Literaturverzeichnis
+       \printbibliography[heading=bibintoc]
+    \cleardoublepage
+    
+
+
+    \listoffigures   % fuer ein eventuelles Abbildungsverzeichnis
+\listoftables
+\listofalgorithms
+
+\appendix
+
+
+\end{document}

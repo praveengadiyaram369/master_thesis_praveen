@@ -1,0 +1,121 @@
+% !TEX root = ../thesis-sample.tex
+\appendix
+\doublespacing
+\chapter{Technical keywords and definitions}
+\label{appendix:tk}
+\begin{description}
+	
+	\item[Uniform Resource Locator] \hfill \\
+	
+	 \ac{URL} is used to uniquely locate resources on the Internet~\cite{berners1994uniform}. Any resource on the Internet can be accessed with a unique \ac{URL}. For example, the \ac{URL} <https://www.linux.org/> represents a resource on the Internet.
+	
+	 \item[HTML] \hfill \\
+	 
+	 \ac{HTML} is a markup language for representing documents on the \ac{WWW} and linking to other documents or information sources such as images, video, audio, etc.~\cite{html}.
+	
+	 \item[CSS] \hfill \\ 
+	 
+	 \ac{CSS} is a rule-based language for styling websites~\cite{mozillaWhatCSS}. The elements in a website can be placed appropriately using specific rules mentioned in \ac{CSS}. Furthermore, many front-end visual features, such as text size, color, animations, etc., can be configured using \ac{CSS}.
+	
+	\item[UUID] \hfill \\ 	
+	
+	\ac{UUID} is generally used to universally identify an entity uniquely. UUID4 creates a 36-character alphanumeric string that is based on random numbers and does not use any information regarding network address. In this master thesis, UUID4\footnote{\url{https://docs.python.org/3/library/uuid.html}} from Python is used.
+	
+	\item[Ground-truth] \hfill \\
+	
+	Ground-truth labels are information that is more accurate, relevant, and true than the knowledge of the system being tested~\cite{cardoso2014gold}. This information is critical for evaluating and comparing different systems.
+	
+	\item[Supervised learning] \hfill \\ Supervised learning algorithms are \ac{ML} approaches that use labeled data~\cite{9155761} to train the algorithm parameters using specific criteria or a loss function.
+	
+	\item[Unsupervised learning] \hfill \\ Unsupervised learning algorithms are \ac{ML} approaches that generally do not use labeled data. Clustering is an example of these algorithms, where similar data points are clustered into groups based on the features in the data~\cite{mahesh2020machine}. These groups are called \textit{clusters}. Document clustering is a technique used to group documents into topics without ground-truth information~\cite{de2012document}.
+	
+	\item[Soft clustering] \hfill \\ In \textit{soft clustering}, data points are assigned to one or more clusters by the clustering algorithm~\cite{de2012document}. This assignment depends mainly on the structure of the data, and particularly in the case of news articles, documents are often assigned to multiple topics rather than just one.
+	
+	 \item[Tensorflow Hub] \hfill \\ Tensorflow Hub\footnote{\url{https://www.tensorflow.org/hub}} is a repository of pre-trained ML models from Tensorflow\footnote{\url{https://www.tensorflow.org/}}, an open-source platform for ML. Tensorflow provides an ecosystem of tools and libraries that allow developers to build and deploy ML-powered apps, and researchers to push the boundaries of state-of-the-art models~\cite{tensorflow_developers_2022_6574269}.
+	
+	 \item[Token] \hfill \\ In NLP, a token is a word or a basic unit in a text document, and tokenization is the process of splitting a text document into tokens~\cite{webster1992tokenization}. The document token length is calculated as the number of tokens present in a document.
+	
+	\item[Noun chunks] \hfill \\ Noun chunks or phrases are the nouns and all the words that depend on these nouns~\cite{noun_chunk}. Consider the sentence, \textit{"Army project may improve military communications by boosting 5G technology"}~\cite{sample_news_article}. The possible noun chunks extracted from this sentence are \textit{"Army project", "Military communications", "5G technology"}.
+	
+	\item[Keywords] \hfill \\ Keywords are the noun chunks that are highly meaningful in a text document and can best describe or summarize a document~\cite{beliga2014keyword}. The proposed approach uses an unsupervised multi-lingual keyword extraction approach to extract the most significant keywords from each news article.
+	
+	
+	 \item[Stopwords] \hfill \\ Stopwords often appear in a text document (or in a corpus) and carry very little information. Due to their low significance compared to other words, they are considered uninformative and removed during text processing~\cite{sarica2021stopwords}. Some examples of stopwords in English are 'and', 'of', etc., and in German are 'der', 'das', etc.
+	
+	\item[Fuzzy string matching] \hfill \\ Fuzzy string matching is an approximate string matching technique that identifies how approximately two strings are similar. In lexical matching, the outcome of string matching follows a binary outcome of similar or not similar. In fuzzy matching, the individual parts of the text are considered to generate an approximate string similarity score. This approximate string matching is beneficial in information retrieval when certain words are misspelled in the user query~\cite{redisWhatFuzzy}.
+	
+	\item[Levenshtein distance] \hfill \\ Levenshtein distance is a string-matching metric for measuring the difference between two strings at the character level. The distance is generally interpreted as the minimum number of changes required to make the strings identical~\cite{redisWhatFuzzy}. The higher the Levenshtein distance, the more dissimilar or non-identical the strings are. For example, the strings 'Jan' and 'John'. The Levenshtein distance is two between these strings, as it takes two changes to make the strings identical.
+	
+	\item[Text embeddings] \hfill \\ The distributed vector representation of a text
+	in the semantic space is generally referred as text embeddings. These embeddings are generally described in the research as word or sentence embeddings referring to the text being either a word or a sentence repectively. These embeddings can
+	also be generated with short phrases and noun chunks~\cite{cer2018universal, yang2019multilingual}.
+	
+	
+	\item[SQLite DB] \hfill \\ SQLite is a lightweight serverless, self-contained, transactional database engine~\cite{bhosale2015sqlite}. In this master thesis, labeled data are stored in \textit{SQLite DB} using the library sqlite3\footnote{\url{https://docs.python.org/3/library/sqlite3.html}}.
+	
+	\item[Redis DB] \hfill \\  Redis\footnote{\url{https://redis.io/}} is an open-source, in-memory data store used as a database, cache, etc. In this thesis, redis is used for caching sentence embeddings and has shown a huge improvement in the time taken for the clustering and document retrieval.
+	
+	
+	\item[Statistical testing] \hfill \\ A statistical test is a way to determine whether there is enough evidence
+	to accept or reject a hypothesis about a process~\cite{kaur2015comparative}. These tests are useful in
+	making critical decisions about a process by determining whether two data samples significantly
+	differ. There are two types of statistical tests, namely parametric
+	and non-parametric. Parametric tests assume that the population follows a particular distribution and requires the sample data to follow the same distribution. A distribution
+	here signifies parameters such as mean, standard deviation, and parametric
+	testing. On the contrary, the non-parameter tests do not assume the population to follow
+	any particular distribution. The Wilcoxon signed-rank test is a statistical hypothesis test that does not rely on specific distribution assumptions and is considered non-parametric. It is designed for paired data and evaluates whether the differences within pairs are symmetric, without the requirement of normality in the distribution~\cite{oyeka2012modified}.
+	
+	\item[Intrinsic evaluation] \hfill \\ In case of no labeled data or ground-truth, the clustering output is evaluated through the methods considering only the inherent representation of clustered data~\cite{de2012document}. These methods of evaluation are referred to as \textit{Intrinsic evaluation}. 
+	
+	\item[Extrinsic evaluation] \hfill \\ In \textit{Extrinsic evaluation}, the clustering output is evaluated using the external knowledge such as ground-truth or the relevance judgments~\cite{de2012document}. 
+	
+	\item[Silhouette index] \hfill \\ 
+	Irrespective of the clustering algorithm, the output is more distinctive when the distance between the data points within the cluster is minimum and the distance between the clusters is maximum. Silhouette index~\cite{rousseeuw1987silhouettes} is an intrinsic clustering evaluation measure and is calculated by using the intra-cluster and inter-cluster distances for each sample.
+	
+	\item[Precision] \hfill \\     In IR system evaluation, \text{Precision} is defined as the ratio of retrieved documents that are relevant to all the retrieved documents~\cite{zuva2012evaluation}. This measure can be used to compare different IR systems and be calculated at different retrieved indices. For example, $P@5, P@10, P@15$ measures precision scores at retrieved indices $5, 10, 15$ respectively.
+	
+	
+	\item[Cosine similarity] \hfill \\     Cosine similarity is a metric to measure the degree of similarity between two vectors~\cite{lahitani2016cosine}. In the case of IR systems, the similarity is calculated between the user query and document sentence embeddings, and can be further used to rank the documents.
+	
+	
+	 \item[Python] \hfill \\ Python\footnote{\url{https://www.python.org/doc/essays/blurb/}} is an interpreted, object-oriented, and high-level programming language.
+	Python is popular for its simple, easy-to-use syntax and data structures. Python uses
+	dynamic typing that determines the type of the data dynamically during the run-time.
+	The majority of the analysis and website backend development is developed using python.
+	
+	\item[JavaScript] \hfill \\ \ac{JS} is a lightweight interpreted programming language popular as the scripting language for web pages\cite{mozillaWhatJavaScript}. \ac{JS} helps to update
+	the data on the websites dynamically and also handles user interaction. In this master thesis, the
+	asynchronous data transfer between the survey website and the backend Python server
+	is facilitated by \ac{JS}.
+	
+	\item[Bootstrap] \hfill \\ Bootstrap is an open-source \ac{CSS} framework for developing responsive websites\cite{simplilearnWhatBootstrap}.
+	Responsive websites look alike when tested in different environments, such as device screen sizes and orientations (portrait/landscape). The website
+	used in the survey questionnaire is developed using Bootstrap.
+	
+	\item[Docker] \hfill \\ Docker is an open-source technology that allows developers to build, test and
+	deploy their software applications efficiently. Docker uses container technology, software that packages the code and its dependencies to run the applications from one
+	computing environment to another \cite{dockerWhatContainer}. Containers virtualize the operating
+	system independent of the hardware, which creates better code reproducibility.  
+	
+	\item[FastAPI] \hfill \\ FastAPI\footnote{\url{https://fastapi.tiangolo.com/lo/}} is a Python-based web framework for building APIs used as a
+	backend or server-side technology. The survey questionnaire developed in this master is
+	developed using FastAPI.
+	
+	\item[Scrapy] \hfill \\ Scrapy is an open-source framework to extract data from websites, i.e., web scraping. This framework also provides an efficient pipeline to save the scraped data in a database or a text file. Thousands of news websites are efficiently downloaded using the Scrapy framework, and the data is saved in a SQLite-DB.
+	
+	 \item[FuzzyWuzzy] \hfill \\ FuzzyWuzzy\footnote{\url{https://pypi.org/project/fuzzywuzzy/}} is an open-source library in Python to calculate the syntactical text similarity between two strings. Internally, the library uses Levenshtein distance. FuzzyWuzzy assigns a score between 0 and 100 according to the similarity between two strings.
+	
+	\item[Context] \hfill \\ In this master thesis, we define a context as a particular domain or field in which the user is interested. For example, in the user query \textit{Cloud}, the retrieved documents are related to different domains or contexts, such as cloud computing, combat cloud, and clouds in the sky. Even though there is some syntactic and semantic matching, the user intention is still unclear from the query.
+	
+	\item[Labeler] \hfill \\ A person who assigns an appropriate label to the data according to the labeling criteria is referred to as a labeler.
+	
+	\item[Query type] \hfill \\ Input search queries from the user can be of any form. In this master thesis, each form of a possible user query is called a query type. All possible user queries can be categorized into two major query types: phrase (three words or less) and sentence queries.
+	
+	
+\end{description}
+
+
+\mycomment{
+\chapter{Another Appendix}
+\lipsum[24]
+}

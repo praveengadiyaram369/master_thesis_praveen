@@ -1,0 +1,134 @@
+	\mycomment{
+	 
+	Current search engines are well-established with optimized indexing algorithms such as SERP ~\cite{gudivada2015understanding}. Furthermore, and also rely on different data sources such as blogs, wikipedia, news
+	articles, advertisements, etc. Some of the search engines shown in \prettyref{fig:search_engines} have a unique advantage in improving
+	the search results by learning the user's intention or behavior based on the browsing history,
+	location, cookies, etc ~\cite{haucap2014google}. 
+
+\begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=.7\textwidth]{images/top-10-search-engines1.jpg}
+ 	\caption[Most popular search engines]{Most popular search engines ~\cite{best_search_engines}
+ 	}
+	\label{fig:search_engines} 
+
+\end{figure}
+
+	A recent analysis to understand the user search queries on 306 million keywords used in google search showed that user queries were comprised of a relatively small number of keywords, and the mean keyword length is 1.9 words and 8.5 characters~\cite{google_keyword}. Search queries are  classified into three categories: \textit{ Transactional, Navigational, and Informational queries}, ~\cite{azad2019query} as shown in \prettyref{tab:query_types}. In this experiment, we are dealing specifically with  Informational search queries, where the objective of the query is to request precise information matching the user's intention. \\
+\\
+
+\begin{center}
+\captionof{table}{User search query types}\label{tab:query_types}
+\begin{tabularx}{0.8\textwidth}{|c|c|Y|}
+
+ 	\hline
+S No. & Query type & Definition \\
+\hline
+1 & Navigational queries & Search queries that target reach a particular website or URL ,e.g., YouTube.com, amazon.de \\
+\hline
+
+2 & Transactional queries & Search queries that intend to perform a  specific transactional activity, such as making an online purchase or downloading research papers \\
+
+\hline
+3 & Informational queries & Search queries that aim to retrieve precise user information and cover various domains and topics, e.g., Robots, AI,  How to make Tea?   \\
+\hline
+
+\end{tabularx}
+\end{center}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{center}
+	\captionof{table}{Current retrieval algorithm comparison on different query types}\label{tab:ir_system_comparison}
+	\begin{tabularx}{.7\textwidth}{|c|Y|Y|c|}
+		
+		\hline
+		S No. &  Query type &  Query examples & Better retrieval algorithm  \\
+		\hline
+		1 & Simple single word  &  & BM-25 \\
+		\hline
+		2 & Phrase query  &  & BM-25 \\
+		\hline
+		3 & Abbreviations  &  & BM-25 \\
+		\hline
+		4 & Prefix/Suffix queries  &  & BM-25 \\
+		\hline
+		5 & No meaning  &  & BM-25 \\
+		\hline
+		6 & Multi-lingual queries  &  & Semantic search \\
+		\hline
+		7 & German composite words  &  & Semantic search \\
+		\hline
+		8 & Spelling mistakes  &  & Semantic search \\
+		\hline
+		9 & Polysemy  & Combat Cloud, Cloud computing & Semantic search \\
+		\hline
+		10 & Sentence/long phrase queries  &  & Semantic search \\
+		\hline
+		
+	\end{tabularx}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	\subsection{Modeling formalization} 
+Each document can contain multiple sub-topics and each sub-topic is mapped to multiple documents. Let us consider a Corpus $C$ that contains $n$ documents and each document $D$ is expressed as a set of candidate keywords ($k$). The number of keywords selected from each document depends on each document.
+
+\centerline{$D$ = $\{k_1, k_2, k_3,\dots\}$ }
+
+Once the user provides the retriever a search query $q$, a candidate pool $CP$ of size $m$ is generated, which is a document set.
+
+\centerline{$CP_q$ = $\{D_i, D_j, D_k,\dots, D_m\}$}
+
+Subsequently, a merged candidate keyword set $M$ of size $l$ is extracted, which is a combination of keywords from documents in candidate pool $CP$. 
+
+\centerline{$MCP_q$ = $\{k_i, k_j, k_k,\dots, k_l\}$}
+
+Thereafter the keyword set $M_q$ is clustered into $r$ groups ($s$) and is defined as a sub-topic set $S_q$. 
+
+\centerline{$S_q$ = $\{s_i, s_j, s_k,\dots, s_r\}$}
+
+And each sub-topic ($s$) is again expressed as a set of keywords  ($k$). The number of keywords in a sub-topic cluster can vary from cluster to cluster.
+
+\centerline{$s_i$ = $\{k_x, k_y, k_z,\dots\}$}
+
+The mapping between the document and keywords is already known from above, now we can express each document as a set of sub-topics, and also each sub-topic is expressed as a set of documents.
+
+\centerline{$D$ = $\{s_i, s_j, s_k,\dots\}$ }
+\centerline{$s_i$ = $\{D_x, D_y, D_z,\dots\}$}
+
+
+
+QE is a technique to reformulate the user's original query to improve the relevancy of the search results and also offers query recommendations along with the retrieved results~\cite{azad2019query}. QC helps to improve the formulation of query during the initial query formulation, where as QE improves the query quality after the execution of original query search~\cite{marchionini2007find}. 

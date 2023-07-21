@@ -1,0 +1,39 @@
+% !TEX root = ../thesis.tex
+
+% Kurzfassung in Deutsch und Englisch
+\begin{otherlanguage}{ngerman}
+    \section*{Kurzfassung}
+\ac{TR} beinhaltet das Abrufen relevanter Textdokumente aus einer Sammlung als Antwort auf eine Suchanfrage. \ac{TR} ist ein Teilgebiet des \ac{IR}, das sich auf textbasierte Datenquellen und abgerufene Daten konzentriert. Eine der Hauptherausforderungen im \ac{IR} besteht darin, hoch relevante Dokumente als Top-Ergebnisse für eine bestimmte Suchanfrage abzurufen. Diese Herausforderung wird schwieriger, wenn der Benutzer eine spezifische Absicht hat, jedoch kontextuelle Informationen in der Suchanfrage fehlen. Beispielsweise kann eine Benutzeranfrage wie "Robotik" Dokumente aus verschiedenen Bereichen wie Produktion, Landwirtschaft, Militär usw. liefern. Eine einfache Stichwortsuche kann den Benutzer mit vielen falsch positiven Ergebnissen überfluten, wenn der Benutzer nur die innovationsbezogenen Dokumente aus einem bestimmten Bereich wie "Militär" erkunden möchte. Das Abrufen von Textdokumenten wie Nachrichtenartikeln oder längeren Texten erschwert die Aufgabe des Abrufens aufgrund der Fülle von Wörtern weiter. Eine effiziente Abfrage hängt stark von der Dokumentenindexierung ab, insbesondere bei der Bearbeitung großer Sammlungen von Textdokumenten.
+
+Um diese Herausforderungen anzugehen, wird ein optimierter Kandidatendokumentenpool durch die Kombination von lexikalischen und semantischen Übereinstimmungstechniken erstellt. Dieser Ansatz gewährleistet die Generierung eines hochrepräsentativen Dokumentenpools, der für die Suchanfrage des Benutzers geeignet ist. Um die abgerufenen Dokumente innerhalb des Pools genau darzustellen, wird in dieser Masterarbeit eine Kandidatenschlüsselwörter Auswahltechnik basierend auf Ähnlichkeit zur Suchanfrage vorgeschlagen und bewertet. Die generierten Dokumentenrepräsentationen werden als sub-topics bezeichnet, die separate Wege für den Zugriff auf abgerufene Dokumente schaffen. Der vorgeschlagene Ansatz wird mit einer unüberwachten neuronalen Nachrangtechnik aus der Literatur verglichen und zeigt eine bessere Leistung, wenn ein optimierter Kandidatenpool verwendet wird. Zusätzlich wird eine manuelle Bewertung der abgerufenen Ergebnisse unter Verwendung eines Umfragefragebogens durchgeführt, bei der die Mehrheit der Teilnehmer zugestimmt hat, dass die vorgeschlagene Methodik zur Erstellung unterscheidbarer sub-topics geeignet ist. Darüber hinaus wird eine explorative Analyse durchgeführt, um die Leistung von auf sub-topic Rankings basierenden Abrufsystemen zu bewerten.\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+
+
+\end{otherlanguage}
+
+\begin{otherlanguage}{english}
+    \section*{Abstract}
+
+Text Retrieval (TR) involves retrieving relevant text documents from a collection in response to a search query. \ac{TR} is a branch of Information Retrieval (IR) that focuses on text-based data sources and retrieved data. One of the main challenges in \ac{IR} is retrieving highly relevant documents as the top results for a given query. This challenge becomes more difficult when the user has a specific intention but lacks contextual information in the search query. For instance, a user query like "Robotics" can yield documents from multiple domains, such as manufacturing, agriculture, military, etc. A simple keyword search can overwhelm the user with many false positives when the user wants to explore the innovation documents related only to a specific domain, such as "Military". Retrieving text documents, such as news articles or lengthy texts, further complicates the retrieval task due to the abundance of words. Efficient retrieval heavily relies on document indexing, particularly when dealing with large text document collections.
+
+To address these challenges, an optimized candidate document pool is created through the combination of lexical and semantic matching techniques. This approach ensures the generation of a highly representative document pool suitable to the user query. To accurately represent the retrieved documents within the pool, a candidate keyword selection technique based on query similarity is proposed and evaluated in this master thesis. The generated document representations are referred to as sub-topics, which establish distinct pathways for accessing retrieved documents. The proposed approach is compared to a unsupervised neural re-ranking technique from the literature and demonstrates better performance when an optimized candidate pool is used. Additionally, a manual evaluation of the retrieved results is conducted using a survey questionnaire, where the majority of participants have agreed that the proposed methodology for creating distinguishable sub-topics. Moreover, exploratory analysis is conducted to assess the performance of retrieval systems developed based on sub-topic rankings.
+
+
+\end{otherlanguage}
