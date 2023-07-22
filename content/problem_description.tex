@@ -8,7 +8,7 @@ In this chapter, the problem addressed in this master thesis is introduced, and 
 
 The \ac{FKIE} is a renowned research institute dedicated to pioneering solutions in information and communications technology. Their primary focus lies in the development of effective and efficient human-machine systems\footnote{\url{https://www.fkie.fraunhofer.de/en/about-fkie.html}}. The users at \ac{FKIE} have a particular interest in accessing news articles that are related to  innovation and advancements in the fields of technology and military. \prettyref{fig:areas_of_interest} provides a visual representation of the areas of interest to the \ac{FKIE} users. It is important to note that this list is not bounded and can encompass additional domains.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=.8\textwidth]{images/keynotes_images/areas_of_interest.jpg}
 	\caption{Areas of interest for users at FKIE. \label{fig:areas_of_interest}}
@@ -16,7 +16,7 @@ The \ac{FKIE} is a renowned research institute dedicated to pioneering solutions
 
 \section{Key Definitions}
 
-This section provides explanations of several key technologies utilized in the previous work and additional definitions can be found in Appendix A.
+This section provides explanations of several key technologies utilized in the previous work and additional definitions can be found in Appendix \ref{appendix:A}.
 
 \begin{description}
 	
@@ -40,7 +40,7 @@ This section provides explanations of several key technologies utilized in the p
 	
 	\item[News article] \hfill \\ A news article, which is considered a text document, is typically published by a news website. \prettyref{fig:sample_newsarticle} provides an example of a news article. In this master thesis, the terms 'news article' and 'text document' are used interchangeably to refer to the same concept.
 	
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=.8\textwidth]{images/mitera_screenshots/sample_news_article.PNG}
 		\caption[News article example.]{A sample news article from the document database~\cite{sample_news_article}.\label{fig:sample_newsarticle}}
@@ -76,7 +76,7 @@ The second component, referred to as the "Document filter", employs a \ac{SVM} c
 	\caption[Search user interface.]{User interface to retrieve documents for FKIE users. \label{fig:mitera_search}}
 \end{figure}
 
-The positive documents obtained from the "Document filter" stage are stored in two separate document indices, namely the inverted index and the semantic search index (see definitions above and Appendix A for more details). To retrieve documents for a given user query, a dedicated "Retriever" component has been developed, which utilizes both indices and employs lexical and semantic matching techniques. The retrieval process is assisted through a user-friendly web interface, as depicted in \prettyref{fig:mitera_search}. A total of 327,421 news articles were initially scraped, and after applying the document filtering, 26,954 news articles were stored in the document indices. These stored documents are further used in the retrieval process.
+The positive documents obtained from the "Document filter" stage are stored in two separate document indices, namely the inverted index and the semantic search index (see definitions above and Appendix \ref{appendix:A} for more details). To retrieve documents for a given user query, a dedicated "Retriever" component has been developed, which utilizes both indices and employs lexical and semantic matching techniques. The retrieval process is assisted through a user-friendly web interface, as depicted in \prettyref{fig:mitera_search}. A total of 327,421 news articles were initially scraped, and after applying the document filtering, 26,954 news articles were stored in the document indices. These stored documents are further used in the retrieval process.
 
 
 \section{Problem Description}
@@ -87,24 +87,25 @@ Semantic matching is particularly effective when dealing with long sentence quer
  Lexical matching does not consider the inherent meaning of the word causing a vocabulary mismatch problem especially in case of polysemy, synonymy. For example, the words "Vehicle," "Automobile," and "Car" essentially refer to the same thing, but lexical matching techniques fail to establish their relationship. Conversely, semantic matching may retrieve a large number of documents that match the query keywords semantically, but it often fails to present the most relevant documents in the top search results. A manual observation of retrieved results is carried out with a set of sample queries to evaluate the retrieval algorithms,and the results are shared in \prettyref{tab:ir_system_comparison}.
 
 
+
 \begin{center}
 	\captionof{table}[Retrieval algorithms comparison.]{Retrieval algorithms comparison on different query types.}\label{tab:ir_system_comparison}
-	\begin{tabularx}{.99\textwidth}{|c|Y|Y|Y|Y|}
+	\begin{tabularx}{.99\textwidth}{|Y|Y|Y|Y|}
 		
 		\hline
-		S. No. &  Query type & Better retrieval technique &  Reason &  Queries used  \\
+		  Query type & Better retrieval technique &  Reason &  Queries used  \\
 		\hline
-		1 & No meaning queries & BM-25 &  Lexical matching  & Person or object names\footnote{User query with no innate meaning of the word namely out of vocabulary words: for example John Dowe, Wester etc.} \\
+	 No meaning queries & BM-25 &  Lexical matching  & Person or object names\footnote{User query with no innate meaning of the word namely out of vocabulary words: for example John Dowe, Wester etc.} \\
 		\hline
-		2 & Multi-lingual queries & Semantic search &  Semantic matching & Artificial Intelligence vs Künstliche Intelligenz\\
+		 Multi-lingual queries & Semantic search &  Semantic matching & Artificial Intelligence vs Künstliche Intelligenz\\
 		\hline
-		3 & German composite words  & Semantic search&  Semantic matching & Quantentech- nologie \\
+	 German composite words  & Semantic search&  Semantic matching & Quantentechnologie \\
 		\hline
-		4 & Spelling mistakes  &  Semantic search&  Semantic matching & Kryptografy, Rbot \\
+	 Spelling mistakes  &  Semantic search&  Semantic matching & Kryptografy, Rbot \\
 		\hline
-		5 & Polysemy  & Semantic search&  Semantic matching & Combat Cloud, Cloud computing \\
+	 Polysemy  & Semantic search&  Semantic matching & Combat Cloud, Cloud computing \\
 		\hline
-		6 & Sentence/long phrase queries  & Semantic search&  Semantic matching  & Schwachstell-
+	 Sentence/long phrase queries  & Semantic search&  Semantic matching  & Schwachstell-
 		enanalyse eigene Waffen-Systeme \\
 		\hline
 		
@@ -176,7 +177,7 @@ The documents retrieved for certain queries are organized into clusters based on
 	\caption[Expected sub-topic retrieval.]{Expected sub-topic extraction for the query: 5G. \label{fig:proposal_idea}}
 \end{figure}
 
-Conversely, selecting parameters that produce fewer representations results in larger individual clusters containing more documents. This, in turn, leads to document repetition within the clusters. After evaluating various approaches to address this issue, we believe that extracting unique contexts in an unsupervised manner from the top results of a user query is more efficient, explainable, and reproducible compared to supervised approaches. This approach not only provides users with deeper insights into the results but also reduces the effort required to find highly relevant documents. 
+Conversely, selecting parameters that produce fewer representations results in larger individual clusters containing more documents. This, in turn, leads to document repetition within the clusters. After evaluating various approaches to address this issue, it is observed that extracting unique contexts in an unsupervised manner from the top results of a user query is more efficient, explainable, and reproducible compared to supervised approaches. This approach not only provides users with deeper insights into the results but also reduces the effort required to find highly relevant documents. 
 
 \prettyref{fig:proposal_idea} presents a sample output of the expected context extraction pipeline, where the extracted unique contexts are referred to as "sub-topics". The proposed approach in this master thesis aims to tackle the aforementioned challenges and generate highly diverse sub-topics. It considers news articles from diverse sources and can be easily adapted to other sources containing long text documents.
 

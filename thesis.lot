@@ -10,44 +10,45 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Retrieval algorithms comparison.}}{21}{table.2.1}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Clustering results in German and English.}}{22}{table.2.2}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Retrieval algorithms comparison.}}{26}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Clustering results in German and English.}}{27}{table.2.2}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Different $cks$ parameter examples.\relax }}{50}{table.5.1}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Relevance labels introduction and details.}}{48}{table.6.1}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Testset queries used for the evaluation.\relax }}{48}{table.6.2}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Queries removed from the testset.\relax }}{49}{table.6.3}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces Performance comparison of caching.}}{50}{table.6.4}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces Parameters used in the pipeline for testing.\relax }}{53}{table.6.5}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Proposed \ac {IR} systems for evaluation.\relax }}{57}{table.6.6}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces Combined IR5 system results. \relax }}{58}{table.6.7}%
-\contentsline {table}{\numberline {6.8}{\ignorespaces Proposed evaluation techniques. \relax }}{61}{table.6.8}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Relevance labels introduction and details.}}{54}{table.6.1}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Testset queries used for the evaluation.\relax }}{54}{table.6.2}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Queries removed from the testset.\relax }}{55}{table.6.3}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Performance comparison of caching.}}{56}{table.6.4}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Parameters used in the pipeline for testing.\relax }}{58}{table.6.5}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Proposed \ac {IR} systems for evaluation.\relax }}{62}{table.6.6}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Combined IR5 system results. \relax }}{63}{table.6.7}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Proposed evaluation techniques. \relax }}{66}{table.6.8}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Different $cks$ parameter examples.\relax }}{64}{table.7.1}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces Mean of evaluation metrics for CP-30.}}{66}{table.7.2}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces Mean of evaluation metrics for CP-100.}}{67}{table.7.3}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces Mean missed document values over the cks parameter.\relax }}{68}{table.7.4}%
-\contentsline {table}{\numberline {7.5}{\ignorespaces Objective score analysis for CP-30.}}{68}{table.7.5}%
-\contentsline {table}{\numberline {7.6}{\ignorespaces Objective score analysis for CP-100.}}{69}{table.7.6}%
-\contentsline {table}{\numberline {7.7}{\ignorespaces Parameters selected after parameter selection analysis. \relax }}{69}{table.7.7}%
-\contentsline {table}{\numberline {7.8}{\ignorespaces Manual clustering output analysis.}}{70}{table.7.8}%
-\contentsline {table}{\numberline {7.9}{\ignorespaces Results from manual cks parameter selection of 65.}}{70}{table.7.9}%
-\contentsline {table}{\numberline {7.10}{\ignorespaces Final parameters selected after manual analysis.\relax }}{71}{table.7.10}%
-\contentsline {table}{\numberline {7.11}{\ignorespaces Keyword observations during clustering over 17 queries.\relax }}{72}{table.7.11}%
-\contentsline {table}{\numberline {7.12}{\ignorespaces Mean cluster count over cks percentile parameter. \relax }}{73}{table.7.12}%
-\contentsline {table}{\numberline {7.13}{\ignorespaces Summarized description of the questions asked in the survey.\relax }}{74}{table.7.13}%
-\contentsline {table}{\numberline {7.14}{\ignorespaces Pariticpant counts in the survey.\relax }}{74}{table.7.14}%
-\contentsline {table}{\numberline {7.15}{\ignorespaces Improper user feedback input in the survey. \relax }}{76}{table.7.15}%
-\contentsline {table}{\numberline {7.16}{\ignorespaces Question 2, 3, and 4 results.\relax }}{76}{table.7.16}%
-\contentsline {table}{\numberline {7.17}{\ignorespaces Query and sub-topic analysis for system A. \relax }}{78}{table.7.17}%
-\contentsline {table}{\numberline {7.18}{\ignorespaces Question 5 results.\relax }}{79}{table.7.18}%
-\contentsline {table}{\numberline {7.19}{\ignorespaces Queries collected for the subtopic retrieval effectiveness.\relax }}{79}{table.7.19}%
-\contentsline {table}{\numberline {7.20}{\ignorespaces Brief IR system introduction.\relax }}{80}{table.7.20}%
-\contentsline {table}{\numberline {7.21}{\ignorespaces Mean expectation score results.\relax }}{80}{table.7.21}%
-\contentsline {table}{\numberline {7.22}{\ignorespaces Mean average precision results.\relax }}{81}{table.7.22}%
-\contentsline {table}{\numberline {7.23}{\ignorespaces Unique ranking counts of sub-topics and documents.\relax }}{82}{table.7.23}%
-\contentsline {table}{\numberline {7.24}{\ignorespaces Literature comparison results.\relax }}{83}{table.7.24}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces Mean of evaluation metrics for CP-30.}}{70}{table.7.1}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Mean of evaluation metrics for CP-100.}}{71}{table.7.2}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Mean missed document values over the cks parameter.\relax }}{72}{table.7.3}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Objective score analysis for CP-30.}}{73}{table.7.4}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces Objective score analysis for CP-100.}}{73}{table.7.5}%
+\contentsline {table}{\numberline {7.6}{\ignorespaces Parameters selected after parameter selection analysis. \relax }}{74}{table.7.6}%
+\contentsline {table}{\numberline {7.7}{\ignorespaces Manual clustering output analysis.}}{74}{table.7.7}%
+\contentsline {table}{\numberline {7.8}{\ignorespaces Results from manual cks parameter selection of 65.}}{75}{table.7.8}%
+\contentsline {table}{\numberline {7.9}{\ignorespaces Final parameters selected after manual analysis.\relax }}{76}{table.7.9}%
+\contentsline {table}{\numberline {7.10}{\ignorespaces Keyword observations during clustering over 17 queries.\relax }}{77}{table.7.10}%
+\contentsline {table}{\numberline {7.11}{\ignorespaces Mean cluster count over cks percentile parameter. \relax }}{78}{table.7.11}%
+\contentsline {table}{\numberline {7.12}{\ignorespaces Summarized description of the questions asked in the survey.\relax }}{79}{table.7.12}%
+\contentsline {table}{\numberline {7.13}{\ignorespaces Pariticpant counts in the survey.\relax }}{79}{table.7.13}%
+\contentsline {table}{\numberline {7.14}{\ignorespaces Improper user feedback input in the survey. \relax }}{81}{table.7.14}%
+\contentsline {table}{\numberline {7.15}{\ignorespaces Question 2, 3, and 4 results.\relax }}{81}{table.7.15}%
+\contentsline {table}{\numberline {7.16}{\ignorespaces Query and sub-topic analysis for system A. \relax }}{83}{table.7.16}%
+\contentsline {table}{\numberline {7.17}{\ignorespaces Question 5 results.\relax }}{84}{table.7.17}%
+\contentsline {table}{\numberline {7.18}{\ignorespaces Queries collected for the subtopic retrieval effectiveness.\relax }}{84}{table.7.18}%
+\contentsline {table}{\numberline {7.19}{\ignorespaces Brief IR system introduction.\relax }}{85}{table.7.19}%
+\contentsline {table}{\numberline {7.20}{\ignorespaces Mean expectation score results.\relax }}{85}{table.7.20}%
+\contentsline {table}{\numberline {7.21}{\ignorespaces Mean average precision results.\relax }}{86}{table.7.21}%
+\contentsline {table}{\numberline {7.22}{\ignorespaces Unique ranking counts of sub-topics and documents.\relax }}{87}{table.7.22}%
+\contentsline {table}{\numberline {7.23}{\ignorespaces Literature comparison results.\relax }}{88}{table.7.23}%
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,7 +1,6 @@
 \documentclass[master,twoside,extern,palatino]{rgseThesis}
 
-% für "lorem ipsum" Blindtext - sollte bei echten Arbeiten natürlich raus ;-)
-\usepackage{lipsum}
+
 \usepackage{makecell}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \newcommand{\mycomment}[1]{}
@@ -10,6 +9,11 @@
 \usepackage{acronym}[sorting]
 \usepackage{hyperref}
 \usepackage{lastpage}
+%\usepackage[document]{ragged2e}
+\raggedbottom
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage[bottom]{footmisc}
 
 
 \usepackage{xcolor}
@@ -18,7 +22,7 @@
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
 
-\author{Gadiyaram, Sri Sai Praveen}
+\author{Sri Sai Praveen Gadiyaram}
 % \studiengang{Web and Data Science} % Default ist Informatik, bei Proposals ignoriert
 
 \title{Efficient semantic sub-topic retrieval and evaluation from long text documents.}
@@ -33,6 +37,7 @@
 \externName{Informationstechnik für Führungssysteme (ITF)} % optional Untertitel des Logos
 
 \usepackage[backend=biber]{biblatex}
+
 % Literatur-Datenbank
 \addbibresource{literature.bib}
 \DeclareUnicodeCharacter{2009}{\,} 
@@ -56,6 +61,10 @@
    % \include{content/abstract}
 
     \tableofcontents
+
+    \listoffigures   % fuer ein eventuelles Abbildungsverzeichnis
+\listoftables
+\listofalgorithms
 
     \clearpage
      \section*{Acronyms}
@@ -83,17 +92,13 @@
     
         \include{content/conclusion}
 
-    \include{content/appendix}
+
     % Literaturverzeichnis
        \printbibliography[heading=bibintoc]
     \cleardoublepage
-    
+ 
 
-
-    \listoffigures   % fuer ein eventuelles Abbildungsverzeichnis
-\listoftables
-\listofalgorithms
-
+   \include{content/appendix}
 \appendix
 
 

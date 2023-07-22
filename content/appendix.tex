@@ -1,8 +1,8 @@
 % !TEX root = ../thesis-sample.tex
 \appendix
-\doublespacing
+%\doublespacing
 \chapter{Technical keywords and definitions}
-\label{appendix:tk}
+\label{appendix:A}
 \begin{description}
 	
 	\item[Uniform Resource Locator] \hfill \\
@@ -33,9 +33,9 @@
 	
 	 \item[Tensorflow Hub] \hfill \\ Tensorflow Hub\footnote{\url{https://www.tensorflow.org/hub}} is a repository of pre-trained ML models from Tensorflow\footnote{\url{https://www.tensorflow.org/}}, an open-source platform for ML. Tensorflow provides an ecosystem of tools and libraries that allow developers to build and deploy ML-powered apps, and researchers to push the boundaries of state-of-the-art models~\cite{tensorflow_developers_2022_6574269}.
 	
-	 \item[Token] \hfill \\ In NLP, a token is a word or a basic unit in a text document, and tokenization is the process of splitting a text document into tokens~\cite{webster1992tokenization}. The document token length is calculated as the number of tokens present in a document.
+	 \item[Token] \hfill \\ In \ac{NLP}, a token is a word or a basic unit in a text document, and tokenization is the process of splitting a text document into tokens~\cite{webster1992tokenization}. The document token length is calculated as the number of tokens present in a document.
 	
-	\item[Noun chunks] \hfill \\ Noun chunks or phrases are the nouns and all the words that depend on these nouns~\cite{noun_chunk}. Consider the sentence, \textit{"Army project may improve military communications by boosting 5G technology"}~\cite{sample_news_article}. The possible noun chunks extracted from this sentence are \textit{"Army project", "Military communications", "5G technology"}.
+	\item[Noun chunks] \hfill \\ Noun chunks or phrases are the nouns and all the words that depend on these nouns~\cite{noun_chunk}. Consider the sentence, \textit{Army project may improve military communications by boosting 5G technology}~\cite{sample_news_article}. The possible noun chunks extracted from this sentence are "Army project", "Military communications", "5G technology".
 	
 	\item[Keywords] \hfill \\ Keywords are the noun chunks that are highly meaningful in a text document and can best describe or summarize a document~\cite{beliga2014keyword}. The proposed approach uses an unsupervised multi-lingual keyword extraction approach to extract the most significant keywords from each news article.
 	
@@ -62,8 +62,10 @@
 	differ. There are two types of statistical tests, namely parametric
 	and non-parametric. Parametric tests assume that the population follows a particular distribution and requires the sample data to follow the same distribution. A distribution
 	here signifies parameters such as mean, standard deviation, and parametric
-	testing. On the contrary, the non-parameter tests do not assume the population to follow
-	any particular distribution. The Wilcoxon signed-rank test is a statistical hypothesis test that does not rely on specific distribution assumptions and is considered non-parametric. It is designed for paired data and evaluates whether the differences within pairs are symmetric, without the requirement of normality in the distribution~\cite{oyeka2012modified}.
+	testing. 
+	
+	On the contrary, the non-parameter tests do not assume the population to follow
+	any particular distribution. The wilcoxon signed-rank test is a statistical hypothesis test that does not rely on specific distribution assumptions and is considered non-parametric. It is designed for paired data and evaluates whether the differences within pairs are symmetric, without the requirement of normality in the distribution~\cite{oyeka2012modified}.
 	
 	\item[Intrinsic evaluation] \hfill \\ In case of no labeled data or ground-truth, the clustering output is evaluated through the methods considering only the inherent representation of clustered data~\cite{de2012document}. These methods of evaluation are referred to as \textit{Intrinsic evaluation}. 
 	
@@ -101,11 +103,11 @@
 	backend or server-side technology. The survey questionnaire developed in this master is
 	developed using FastAPI.
 	
-	\item[Scrapy] \hfill \\ Scrapy is an open-source framework to extract data from websites, i.e., web scraping. This framework also provides an efficient pipeline to save the scraped data in a database or a text file. Thousands of news websites are efficiently downloaded using the Scrapy framework, and the data is saved in a SQLite-DB.
+	\item[Scrapy] \hfill \\ Scrapy\footnote{\url{https://scrapy.org/}} is an open-source framework to extract data from websites, i.e., web scraping. This framework also provides an efficient pipeline to save the scraped data in a database or a text file. Thousands of news websites are efficiently downloaded using the scrapy framework, and the data is saved in a SQLite-DB.
 	
-	 \item[FuzzyWuzzy] \hfill \\ FuzzyWuzzy\footnote{\url{https://pypi.org/project/fuzzywuzzy/}} is an open-source library in Python to calculate the syntactical text similarity between two strings. Internally, the library uses Levenshtein distance. FuzzyWuzzy assigns a score between 0 and 100 according to the similarity between two strings.
+	 \item[FuzzyWuzzy] \hfill \\ FuzzyWuzzy\footnote{\url{https://pypi.org/project/fuzzywuzzy/}} is an open-source library in Python to calculate the syntactical text similarity between two strings. Internally, the library uses levenshtein distance. FuzzyWuzzy assigns a score between 0 and 100 according to the similarity between two strings.
 	
-	\item[Context] \hfill \\ In this master thesis, we define a context as a particular domain or field in which the user is interested. For example, in the user query \textit{Cloud}, the retrieved documents are related to different domains or contexts, such as cloud computing, combat cloud, and clouds in the sky. Even though there is some syntactic and semantic matching, the user intention is still unclear from the query.
+	\item[Context] \hfill \\ In this master thesis, context is defined as a particular domain or field in which the user is interested. For example, in the user query \textit{Cloud}, the retrieved documents are related to different domains or contexts, such as cloud computing, combat cloud, and clouds in the sky. Even though there is some syntactic and semantic matching, the user intention is still unclear from the query.
 	
 	\item[Labeler] \hfill \\ A person who assigns an appropriate label to the data according to the labeling criteria is referred to as a labeler.
 	
@@ -115,7 +117,40 @@
 \end{description}
 
 
-\mycomment{
-\chapter{Another Appendix}
-\lipsum[24]
-}
+
+\chapter{Survey Questionnaire Data}
+\label{appendix:B}
+Here is the list of query keywords provided to the survey participants, presented in both English and German languages.
+
+\begin{enumerate}
+	
+	\item Architekturanalyse 
+	 \item Cloud Computing
+	 \item Combat Cloud
+	 \item Cyber-Verteidigung
+	 \item Data Centric Warfare
+	 \item Edge computing
+	 \item Geoinformationen
+	 \item IT-Bedrohungsanalyse
+	 \item Interoperabilität
+	 \item Kommunikationstechnologien
+	 \item Kryptographie
+	 \item Künstliche Intelligenz
+	 \item Main Ground Combat System (MGCS)
+	 \item Mixed Reality
+	 \item Mobile Kommunikation
+	 \item Multirobotereinsatz
+	 \item Prozessunterstützung
+	 \item Quantentechnologie
+	 \item Robotik
+	 \item Satellitenkommunikation
+	 \item Schutz von unbemannten Systemen
+	 \item Semantische Technologien
+	 \item Sensordatenfusion
+	 \item Software Defined Networking
+	 \item Taktische Datenlinks
+	 \item Taktisches Routing
+	 \item Unbemannte Landsysteme
+	 \item Wellenformen und -ausbreitung
+	
+\end{enumerate}

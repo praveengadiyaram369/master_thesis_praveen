@@ -2,7 +2,7 @@
 
 \chapter{Experiment Setup}
 
-The experiment is divided into three parts in order to address the three research questions proposed in Section 1.2. In this chapter, everything needed to conduct the experiment, such as the dataset, system specifications, hyperparameter selection, etc., is described in seven sections. The section \textit{Clustering evaluation} details the evaluation of clustering results and the selection of the best parameters for the proposed pipeline. Subsequently, the section \textit{Survey evaluation} illustrates the survey design, \ac{IR} system introduction, and comparison strategy. Finally, the section \textit{Precision evaluation} introduces the literature comparison and retrieval performance strategies.
+The experiment is divided into three parts in order to address the three research questions proposed in Section 1.2. In this chapter, everything needed to conduct the experiment, such as the testset, system specifications, hyperparameter selection, etc., is described in seven sections. The section \textit{Clustering evaluation} details the evaluation of clustering results and the selection of the best parameters for the proposed pipeline. Subsequently, the section \textit{Survey evaluation} illustrates the survey design, \ac{IR} system introduction, and comparison strategy. Finally, the section \textit{Precision evaluation} introduces the literature comparison and retrieval performance strategies.
 
 
 
@@ -13,10 +13,10 @@ The experiment is carried out in two different systems according to the time tak
 	
 	\section{Testset Description}
 
-For two main reasons, finding a dataset specific to this research problem is difficult in the current \ac{IR} data repositories. Firstly, the search query needs to be a phrase rather than a sentence. Furthermore, the documents need to be labeled with a specific intention rather than just coherence with the query. The interest at \ac{FKIE} is to retrieve the documents related to "Innovation and Technology," and a new test set is collected for this purpose. Below are a few specific areas of interest in news articles that describe the user intention: \textit{Innovation, Technology breakthroughs, Future products, Applied research, New procurement strategies,} and \textit{Artificial Intelligence}. These topics are also described as positive document characteristics because a document is considered positive when it is strongly related to any of the above-mentioned characteristics.
+For two main reasons, finding a dataset specific to this research problem is difficult in the current \ac{IR} data repositories. Firstly, the search query needs to be a phrase rather than a sentence. Furthermore, the documents need to be labeled with a specific intention rather than just coherence with the query. The interest at \ac{FKIE} is to retrieve the documents related to "Innovation and Technology," and a new testset is collected for this purpose. Below are a few specific areas of interest in news articles that describe the user intention: \emph{Innovation, Technology breakthroughs, Future products, Applied research, New procurement strategies,} and \textit{Artificial Intelligence}. These topics are also described as positive document characteristics because a document is considered positive when it is strongly related to any of the above-mentioned characteristics.
 
 
-The strategy for test set collection is to consider documents from lexical and semantic matching. The results from both algorithms help find the diverse contexts related to the user query. Therefore, a candidate pool with a maximum length of 30 documents is considered. Fifteen lexical and semantic matching documents are combined into a merged set where duplicate documents are removed. Relevance labeling is the task of assigning an appropriate label to the retrieval results inside the candidate pool by multiple independent labelers. Every labeler has to assign a label coherent with the query and consider the \ac{FKIE} user's intention, i.e., coherence with the positive document characteristics mentioned above. Once the labeler assigns a particular label to a document, the labeled information is stored in an SQLite DB.
+The strategy for testset collection is to consider documents from lexical and semantic matching. The results from both algorithms help find the diverse contexts related to the user query. Therefore, a candidate pool with a maximum length of 30 documents is considered. Fifteen lexical and semantic matching documents are combined into a merged set where duplicate documents are removed. Relevance labeling is the task of assigning an appropriate label to the retrieval results inside the candidate pool by multiple independent labelers. Every labeler has to assign a label coherent with the query and consider the \ac{FKIE} user's intention, i.e., coherence with the positive document characteristics mentioned above. Once the labeler assigns a particular label to a document, the labeled information is stored in an SQLite DB.
 
 
 \mycomment{
@@ -30,23 +30,23 @@ The strategy for test set collection is to consider documents from lexical and s
 
 \begin{center}
 	\captionof{table}[Relevance labels introduction and details.]{Relevance labels definition and document distribution.}\label{tab:label_definitions}
-	\begin{tabularx}{0.85\textwidth}{|c|c|c|Y|}
+	\begin{tabularx}{0.95\textwidth}{|c|c|c|Y|}
 		\hline
 		Label-id & Label name & Document count &  Label definition  \\
 		\hline
-		1 & Perfect & 78 &A document that strongly matches  one of the positive document characteristics. \\
+		1 & Perfect & 78 & A document that closely aligns with one of the positive document characteristics. \\
 		\hline
-		2 & Partially relevant & 147 &  A document that contains keywords and seems to be relevant, but still lacks innovation or novelty. \\
+		2 & Partially relevant & 147 &  A document that contains keywords and seems to be relevant, yet still lacks innovation or novelty. \\
 		\hline
 		3 & Irrelevant & 306 & A document containing the given user keyword still lacks innovation and
 		coherent discussion about the query. Eg: click-baits, advertisements, etc,. \\
 		\hline
-		4 & Wrong & 98 & These are false documents and have nothing to do with the user	query. \\
+		4 & Wrong & 98 & These are false documents and unrelated to the user's query. \\
 		\hline
 	\end{tabularx}
 \end{center}
 
-A total of 22 queries are labeled by 5 different labelers. After analyzing the label distribution of the queries, it is observed that the distributions of perfect and partially relevant documents are very low compared to the other labels, as shown in \prettyref{tab:label_definitions}. For evaluation, 17 queries are considered. The queries and their respective label details are shown in \prettyref{tab:testset_queries}.
+A total of 22 queries are labeled by 5 different labelers. After analyzing the label distribution of the queries, it is observed that the distributions of perfect and partially relevant documents are very low compared to the other labels, as shown in \prettyref{tab:label_definitions}. For evaluation, 17 queries are considered and their respective label distributions are shown in \prettyref{tab:testset_queries}.
 
 \begin{center}
 	\captionof{table}{Testset queries used for the evaluation.}\label{tab:testset_queries}
@@ -93,7 +93,7 @@ A total of 22 queries are labeled by 5 different labelers. After analyzing the l
 \end{center}
 
 
-Five queries are removed from this test set due to either no perfect documents or very few perfect and partially relevant documents. These queries are considered outliers and can lead to incorrect results in the target function. The removed queries, along with their label distribution, are shared in \prettyref{tab:removed_queries}. The final data collected through the labeling process is published in the GitHub repository \textit{Thesis-retrieval-data}\footnote{\url{https://github.com/praveengadiyaram369/Thesis-retrieval-data}}.
+Five queries are removed from this testset due to either no perfect documents or very few perfect and partially relevant documents. These queries are considered outliers and can lead to incorrect results in the target function. The removed queries, along with their label distribution, are shared in \prettyref{tab:removed_queries}. The final data collected through the labeling process is published in the GitHub repository \textit{Thesis-retrieval-data}\footnote{\url{https://github.com/praveengadiyaram369/Thesis-retrieval-data}}.
 
 
 \begin{center}
@@ -146,12 +146,12 @@ As described in Section 2.3, the setup of the \ac{IR} system involves web scrapi
 	\caption[Pjpeline for efficient sub-topics.]{Preprocessing pipeline for efficient sub-topic modeling. \label{fig:redis_db}}
 \end{figure}
 
-Manual analysis of sub-topic modeling reveals that the encoding time for a text using a \ac{USE} model is high. This results in users having to wait for a response from the \ac{IR} system. To overcome this, a cache system is developed to store the keyword embeddings obtained from the \ac{USE} model in a Redis-DB. \prettyref{fig:redis_db} illustrates the pipeline implemented to improve the time required for sub-topic modeling and clustering. The performance of sub-topic retrieval using the cache is evaluated against retrieval without using the cache. The mean time taken in seconds for sub-topic retrieval across 28 search queries is considered as the evaluation metric. Let us denote the time taken for retrieving sub-topics for one query $q$ as $t_q$, and the mean time over $N$ queries as $Mt$.
+Manual analysis of sub-topic modeling reveals that the encoding time for a text using a \ac{USE} model is high. This results in users having to wait for a response from the \ac{IR} system. To overcome this, a cache system is developed to store the keyword embeddings obtained from the \ac{USE} model in a Redis-DB. \prettyref{fig:redis_db} illustrates the pipeline implemented to improve the time required for sub-topic modeling. The performance of sub-topic retrieval using the cache is evaluated against retrieval without using the cache. The mean time taken in seconds for sub-topic retrieval across 28 search queries is considered as the evaluation metric. Let us denote the time taken for retrieving sub-topics for one query $q$ as $t_q$, and the mean time over $N$ queries as $Mt$.
 
 
 \centerline{$Mt$ = ($\sum\limits_{i=1}^N t_i) /N$}
 
-The lower the time taken to retrieve sub-topics, the more efficient the approach is considered. \prettyref{tab:cache_comparision} provides a comparison of the mean time taken in seconds for the two approaches. It is observed that caching keyword embeddings results in sub-topic retrieval that is almost 10 times faster, making it a more efficient approach. Sub-topic retrieval without caching the keywords can take up to one minute, which can negatively impact the usability of this proposed candidate keyword selection approach in real-time.
+The approach is considered more efficient when the time taken to retrieve sub-topics is lower. \prettyref{tab:cache_comparision} provides a comparison of the mean time taken in seconds for the two approaches. It is observed that caching keyword embeddings results in sub-topic retrieval that is almost 10 times faster, making it a more efficient approach. Sub-topic retrieval without caching the keywords can take up to one minute, which can negatively impact the usability of this proposed candidate keyword selection approach in real-time.
 
 
 \begin{center}
@@ -170,10 +170,10 @@ The lower the time taken to retrieve sub-topics, the more efficient the approach
 
 \section{Clustering Evaluation}
 
-The main objective of this evaluation is to determine the parameters of the sub-topic modeling that create clusters representing the candidate pool in the best and most diverse manner. Since there are no cluster labels available for the queries in the test set, an alternative approach is adopted to assess the quality of the generated clusters.
+The main objective of this evaluation is to determine the parameters of the sub-topic modeling that create clusters representing the candidate pool in the best and most diverse manner. Since there are no cluster labels available for the queries in the testset, an alternative approach is adopted to assess the quality of the generated clusters.
 
 	
-	\subsection{Intrinsic Evaluation:} In the case of no labeled data, the clustering output is generally evaluated using an intrinsic evaluation approach. The Silhouette index is a metric used for evaluating the clustering performance and is calculated by using the intra-cluster and inter-cluster distances for each sample~\cite{rousseeuw1987silhouettes, shutaywi2021silhouette}. Let us consider the test set $T$ as a set of data points where each data point is denoted as $x_i$.
+	\subsection{Intrinsic Evaluation} In the case of no labeled data, the clustering output is generally evaluated using an intrinsic evaluation approach. The Silhouette index is a metric used for evaluating the clustering performance and is calculated by using the intra-cluster and inter-cluster distances for each sample~\cite{rousseeuw1987silhouettes, shutaywi2021silhouette}. Let us consider the testset $T$ as a set of data points where each data point is denoted as $x_i$.
 		
 		\centerline{$T$ = $\{x_1, x_2, x_2,\dots\}$}
 		
@@ -185,7 +185,7 @@ The main objective of this evaluation is to determine the parameters of the sub-
 		
 		\centerline{$s(x_i)$ = $\frac{b(x_i) - a(x_i)}{max(b(x_i), a(x_i))} $}
 		
-The value $a(x_i)$ represents the mean distance between the data point $x_i$ and all other data points inside the cluster $c_k$. On the other hand, $b(x_i)$ represents the mean distance between the data point $x_i$ and all other data points in the nearest cluster $c_l$~\cite{shutaywi2021silhouette}. These values, $a(x_i)$ and $b(x_i)$, respectively represent the intra-cluster and inter-cluster distances. The silhouette score $s(x_i)$ is calculated for all the data points in the test set, and the final mean is considered as the silhouette score $S$ of the clustering. The silhouette score ranges from -1 to 1, with a higher score representing better clustering performance.
+The value $a(x_i)$ represents the mean distance between the data point $x_i$ and all other data points inside the cluster $c_k$. On the other hand, $b(x_i)$ represents the mean distance between the data point $x_i$ and all other data points in the nearest cluster $c_l$~\cite{shutaywi2021silhouette}. These values, $a(x_i)$ and $b(x_i)$, respectively represent the intra-cluster and inter-cluster distances. The silhouette score $s(x_i)$ is calculated for all the data points in the testset, and the final mean is considered as the silhouette score $S$ of the clustering. The silhouette score ranges from -1 to 1, with a higher score representing better clustering performance.
 
 		
 		\begin{figure}[h]
@@ -197,7 +197,7 @@ The value $a(x_i)$ represents the mean distance between the data point $x_i$ and
 The Silhouette index formula is represented for the data point $x_i$ (highlighted in dark) in ~\prettyref{fig:silhouette_index}, where the red lines represent the intra-cluster distances $a(x_i)$ and the blue lines represent the inter-cluster distances to the nearest cluster $b(x_i)$. In the best-case scenario, the value of $a(x_i)$ is very low compared to the value of $b(x_i)$, which results in well-formed clusters. Therefore, the goal of achieving heterogeneity can be measured using the silhouette score.
 
 	
-		\subsection{Extrinsic Evaluation:} To evaluate the quality of clustering with the help of document labels in the test set, a custom target function $F$ is designed. The target function $F$ tests the quality of clusters against the relevance labels from the dataset. The objective is to determine whether relevant documents are clustered into a similar cluster and the same applies to irrelevant documents. Without any relationship between clustering and relevance labeling, it cannot be assumed that positive and negative documents are automatically clustered together, as they may cover a wide range of keywords in different domains. Therefore, it is more meaningful to evaluate the clustering for negative documents, i.e., irrelevant and wrongly labeled documents. A target function is designed to address the number of negative documents isolated through sub-topic modeling.
+		\subsection{Extrinsic Evaluation} To evaluate the quality of clustering with the help of document labels in the testset, a custom target function $F$ is designed. The target function $F$ tests the quality of clusters against the relevance labels from the dataset. The objective is to determine whether relevant documents are clustered into a similar cluster and the same applies to irrelevant documents. Without any relationship between clustering and relevance labeling, it cannot be assumed that positive and negative documents are automatically clustered together, as they may cover a wide range of keywords in different domains. Therefore, it is more meaningful to evaluate the clustering for negative documents, i.e., irrelevant and wrongly labeled documents. A target function is designed to address the number of negative documents isolated through sub-topic modeling.
 		
 		
 The output of the sub-topic modeling pipeline is distinctive clusters with a unique context, independent of relevance to the user's intention. However, the clusters can be divided into relevant and irrelevant clusters based on the relevance labels in the dataset. Let us consider that $N_1, N_2, N_3, N_4$ represent functions to obtain the number of documents in a single cluster with label IDs $1, 2, 3, 4$ respectively, as shown in \prettyref{tab:label_definitions}, and $C$ represents the cluster set.
@@ -217,7 +217,7 @@ The target function evaluates the clustering by calculating the ratio of irrelev
 		
 		\centerline{$F$ = $\sum\limits_{i=1}^N (|C_i|/|CP_i|) * 100 $}
 		
-		\subsection{Objective Function:} Both the target functions \textit{Silhouette index} and $F$ are used to tune the parameters of the sub-topic modeling pipeline. The \textit{Silhouette index} evaluates the clustering output, and the custom target function $F$ evaluates the distribution of relevant labels. In order to perform automatic parameter selection, an objective function $O$ is proposed, which takes the harmonic mean of silhouette and target function scores. Since the scores are on different scales, both are normalized to a range [0-1] using min-max normalization. Therefore, $O$ ranges from [0-1], and the clustering parameters that generate a higher score are considered as the final sub-topic pipeline parameters. \prettyref{tab:hyper_parameters} shows the parameters that will be tested during clustering evaluation.\\
+		\subsection{Objective Function} Both target functions \textit{Silhouette index} and $F$ are used to tune the parameters of the sub-topic modeling pipeline. The \textit{Silhouette index} evaluates the clustering output, and the custom target function $F$ evaluates the distribution of relevant labels. In order to perform automatic parameter selection, an objective function $O$ is proposed, which takes the harmonic mean of silhouette and target function scores. Since the scores are on different scales, both are normalized to a range [0-1] using min-max normalization. Therefore, $O$ ranges from [0-1], and the clustering parameters that generate a higher score are considered as the final sub-topic pipeline parameters. \prettyref{tab:hyper_parameters} shows the hyperparameters that are employed during clustering evaluation.\\
 		
 		\centerline{$O$ = $ \frac{(2 * S * F)}{(S + F)} $}
 		
@@ -251,11 +251,10 @@ Three main components in the sub-topic modeling pipeline are candidate keyword s
 
 \section{Survey Evaluation}
 
-The sub-topics are assumed to help the user by retrieving the documents that are related to the query and sub-topics. This can be referred to as the assumption of user satisfaction. Precision analysis can evaluate this assumption when we have a dataset with two inputs rather than one input. Two inputs here denote the original query and an additional sub-topic. As \ac{FKIE} is keenly interested in specific topics of technology and the military, and the user intention is also restricted to the innovation-related theme, a manual evaluation with the help of a survey is chosen.
+The sub-topics are assumed to help the user by retrieving the documents that are related to the query and sub-topics. This can be referred to as the assumption of user satisfaction. Precision analysis can evaluate this assumption when a dataset with two inputs rather than one input is available. Two inputs here denote the original query and an additional sub-topic. As \ac{FKIE} is keenly interested in specific topics of technology and the military, and the user intention is also restricted to the innovation-related theme, a manual evaluation with the help of a survey is chosen.
 
 
-
-Two \ac{IR} systems, namely \textit{System A} and \textit{System B}, are designed to represent the documents during retrieval when a query and sub-topic are provided. This survey evaluates the performance of these two \ac{IR} systems. Template queries are used to retrieve and rank the text documents semantically. A template "Innovation in \textbf{Query} and \textbf{Sub-topic}" is used in the retrieval. The "Query" and "Sub-topic" are used as placeholders in the template and are dynamically replaced by actual values the user gives. In addition to evaluating the system, the sub-topic modeling output is also tested by taking the user's feedback on the quality of the sub-topics. Below are the two \ac{IR} systems developed and tested in the survey.
+Two \ac{IR} systems, namely \textit{System A} and \textit{System B}, are designed to represent the documents during retrieval when a query and sub-topic are provided. This survey evaluates the performance of these two \ac{IR} systems. Template queries are used to retrieve and rank the text documents semantically. A template "Innovation in \textbf{Query} and \textbf{Sub-topic}" is used in the retrieval. The "Query" and "Sub-topic" are used as placeholders in the template and are dynamically replaced by actual values the user provides. In addition to evaluating the system, the sub-topic modeling output is also tested by taking the user's feedback on the quality of the sub-topics. Below are the two \ac{IR} systems developed and evaluated in the survey.
 
 
 \begin{enumerate}
@@ -290,16 +289,9 @@ A website is developed to conduct the survey and collect participant data. The f
 	\caption[Query input from the user.]{Survey UI showing query input either from the dropdown menu or a custom input. \label{fig:survey_question_1}}
 \end{figure}
 
-Five questions are developed to evaluate user satisfaction with the retrieved results and sub-topic modeling output. Survey participants are requested to provide a query either by selecting a query from the drop-down list or entering custom text through a text box. ~\prettyref{fig:sub_topic_output} depicts the user interface where participants provide the query. The queries provided in the drop-down list are restricted to a specific keyword list that is of interest for \ac{FKIE}. The keyword list contains queries in both English and German languages, and all participants see the same list. The query keywords list used in the survey is shared below.
+Five questions are developed to evaluate user satisfaction with the retrieved results and sub-topic modeling output. Survey participants are requested to provide a query either by selecting a query from the drop-down list or entering custom text through a text box. ~\prettyref{fig:sub_topic_output} depicts the user interface where participants provide the query. The queries provided in the drop-down list are restricted to a specific keyword list that is of interest for \ac{FKIE}. The keyword list contains queries in both English and German languages, and all participants see the same list. The query keywords list used in the survey is shared in Appendix \ref{appendix:B}.
 
 
-
-\begin{description}
-	
-	\item [Query keywords list (in english and german)] \hfill \\ Architekturanalyse, Cloud Computing, Combat Cloud, Cyber-Verteidigung, Data Centric Warfare, Edge computing, Geoinformationen, IT-Bedrohungsanalyse, Interoperabilität, Kommunikationstechnologien, Kryptographie, Künstliche Intelligenz, Main Ground Combat System (MGCS), Mixed Reality, Mobile Kommunikation, Multirobotereinsatz, Prozessunterstützung, Quantentechnologie, Robotik, Satellitenkommunikation, Schutz von unbemannten Systemen, Semantische Technologien, Sensordatenfusion, Software Defined Networking, Taktische Datenlinks, Taktisches Routing, Unbemannte Landsysteme, Wellenformen und -ausbreitung
-	
-	
-\end{description}
 
 Subsequently, the sub-topics are retrieved during runtime and displayed to the user as a list. \prettyref{fig:sub_topic_output} shows the extracted sub-topic list for the query "Architekturanalyse". Participants are now asked to share feedback on the quality of this sub-topic list.
 
@@ -368,7 +360,7 @@ This question aims to evaluate the usefulness of sub-topic modeling in \ac{IR}. 
 
 \section{Precision evaluation}
 
-Assuming that the cluster labels could be more helpful to the user, the next evaluation technique shows that the clustering output does not deteriorate the performance of the retrieval results. The clustering output is difficult to examine with the baseline \ac{IR} systems because the order of documents needs to be included, and the performance metrics related to false positives need to be addressed. For this purpose, we are extending the sub-topic creation with sub-topic ranking and document ranking. These two rankings help the existing pipeline to create a sequential order of documents and facilitate the evaluation of precision against the baselines. Therefore, this evaluation approach proposes eight different retrieval systems and evaluates the ranked results.
+Assuming that the cluster labels could be more helpful to the user, the next evaluation technique shows that the clustering output does not deteriorate the performance of the retrieval results. The clustering output is difficult to examine with the baseline \ac{IR} systems because the order of documents needs to be included, and the performance metrics related to false positives need to be addressed. For this purpose, the sub-topic creation is extended with sub-topic ranking and document ranking. These two rankings help the existing pipeline to create a sequential order of documents and facilitate the evaluation of precision against the baselines. Therefore, this evaluation approach proposes eight different retrieval systems and evaluates the ranked results.
 
 
 \begin{center}
@@ -399,12 +391,12 @@ Assuming that the cluster labels could be more helpful to the user, the next eva
 The first system, \textit{IR0}, is an arbitrary system where the positive documents are uniformly distributed in the ranking order. \textit{IR1} system is a simple query re-ranking of results based on cosine similarity between the query and documents. The systems \textit{IR2, IR3, IR4} are the results of sub-topic pipeline clustering, where the clusters are first ranked, and later the documents are re-ranked with certain criteria. These three systems simulate the user reading the results linearly or in a sequence. In \textit{IR2}, the sub-topic clusters are ranked by the cosine similarity between the query and the centroid vector of the cluster, and similarly for document ranking.
 
 
-The system \textit{IR3} uses a template similarity criterion, where the similarity is calculated between a template and centroid vector rather than the query. For example, the template string can be "Innovation and Technology". Similarly, \textit{IR4} clusters are ranked using the number of documents in the cluster. The last system, \textit{IR7}, is an unreal system just like \textit{IR0}, but multiple combinations of random rankings of clusters are considered to simulate the random selection of a sub-topic by the user and reading the documents in different sub-topics.
+The system \textit{IR3} uses a template similarity criterion, where the similarity is calculated between a template and centroid vector rather than the query. For example, the template string used in the master thesis is "Innovation and Technology". Similarly, \textit{IR4} clusters are ranked using the number of documents in the cluster. The last system, \textit{IR7}, is an unreal system just like \textit{IR0}, but multiple combinations of random rankings of clusters are considered to simulate the random selection of a sub-topic by the user and reading the documents in different sub-topics.
 
 
 \subsection{Combinational IR systems}
 
-The systems \textit{IR5} and \textit{IR6} are produced by combining sub-topic rankings of other \ac{IR} systems. The sub-topics are combined in such a way that the top-ranking sub-topics are clustered together. This approach adopts the benefits of two ranking criteria into a ranking. As a part of the exploratory analysis, the potential of sub-topic ranking is explored with these combinations. Algorithm \prettyref{algo:combined_ir} details the steps to generate a unique combined ranking output in the case of two individual rankings.
+The systems \textit{IR5} and \textit{IR6} are produced by combining sub-topic rankings of other \ac{IR} systems. The sub-topics are combined in such a way that the top-ranking sub-topics are clustered together. This approach adopts the benefits of two ranking criteria into a ranking. As a part of the exploratory analysis, the potential of sub-topic ranking is analyzed with these combinations. Algorithm \prettyref{algo:combined_ir} details the steps to generate a unique combined ranking output in the case of two individual rankings.
 
 
 	\begin{algorithm}[H]
@@ -456,15 +448,13 @@ The systems \textit{IR5} and \textit{IR6} are produced by combining sub-topic ra
 			\;
 			
 		}
-		\;
-		
 		\KwRet combined\_ranking\_list\;
 	}
 	
 	\caption{Generate combinational IR system.} \label{algo:combined_ir}
 \end{algorithm}
  
-The idea of ranking combinations is influenced by ensemble techniques in machine learning. Ensemble methods improve performance and create robust models by combining the strength of multiple weak-performing models \cite{bi2019machine}. This technique eliminates the individual model bias and consolidates the unique benefits of individual models. The output of combined \ac{IR} systems presents the opportunity to test a unique ranking of sub-topics. This unique ranking of sub-topics creates a unique sequential order of documents. Following Algorithm \prettyref{algo:combined_ir}, an example of the combined ranking output is presented in \prettyref{tab:ir5_result}.
+The idea of ranking combinations is influenced by ensemble techniques in \ac{ML}. Ensemble methods improve performance and create robust models by combining the strength of multiple weak-performing models \cite{bi2019machine}. This technique eliminates the individual model bias and consolidates the unique benefits of individual models. The output of combined \ac{IR} systems presents the opportunity to test a unique ranking of sub-topics. This unique ranking of sub-topics creates a unique sequential order of documents. Following Algorithm \prettyref{algo:combined_ir}, an example of the combined ranking output is presented in \prettyref{tab:ir5_result}.
 
  
  
