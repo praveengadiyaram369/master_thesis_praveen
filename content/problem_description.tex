@@ -2,7 +2,7 @@
 
 \chapter{Problem Context}
 
-In this chapter, the problem addressed in this master thesis is introduced, and an overview of the existing work is provided. The first section "FKIE" presents the scope of the problem and outlines the expectations of the \ac{IR} system from target users perspective. Subsequently, the definitions of several crucial keywords and technologies are provided in the section "Key Definitions". Additionally, the previous work conducted prior to this master thesis is discussed in the section named "Existing Work". Finally, "Problem Description" delves into the challenge in detail with presenting statistical information and discussing the potential of addressing the problem using well-established techniques.
+In this chapter, the problem addressed in this master thesis is introduced, and an overview of the existing work is provided. The first section \emph{FKIE} presents the scope of the problem and outlines the expectations of the \ac{IR} system from target users perspective. Subsequently, the definitions of several crucial keywords and technologies are provided in the section \emph{Key Definitions}. Additionally, the previous work conducted prior to this master thesis is discussed in the section named \emph{Existing Work}. Finally, \emph{Problem Description} delves into the challenge in detail with presenting statistical information and discussing the potential of addressing the problem using well-established techniques.
 
 	\section{FKIE}
 
@@ -11,7 +11,7 @@ The \ac{FKIE} is a renowned research institute dedicated to pioneering solutions
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.8\textwidth]{images/keynotes_images/areas_of_interest.jpg}
-	\caption{Areas of interest for users at FKIE. \label{fig:areas_of_interest}}
+	\caption[Areas of interest for users at FKIE.]{Areas of interest for users at FKIE. \label{fig:areas_of_interest}}
 \end{figure} 
 
 \section{Key Definitions}
@@ -24,7 +24,7 @@ This section provides explanations of several key technologies utilized in the p
 	
 	\item[Lexical matching] \hfill \\ Lexical or syntactic matching is a technique that calculates a relevance score between two text data (strings) by considering the terms present in the data. However, this matching technique is sub-optimal for retrieval purposes since it does not take into account the semantic meaning of the query~\cite{kuzi2020leveraging}.
 	
-	\item[BM-25] \hfill \\ BM-25, also known as Best Match 25, is a ranking function derived from a probabilistic relevance framework. It assigns ranks to documents based on the occurrence of query terms within each document~\cite{amati_bm25_2009}. However, it should be noted that BM-25 ranking operates on a lexical or syntactic matching approach and does not take into account the semantic meaning of the words.
+	\item[BM-25] \hfill \\ BM-25, also known as \emph{Best Match 25}, is a ranking function derived from a probabilistic relevance framework. It assigns ranks to documents based on the occurrence of query terms within each document~\cite{amati_bm25_2009}. However, it should be noted that BM-25 ranking operates on a lexical or syntactic matching approach and does not take into account the semantic meaning of the words.
 	
 	\item[Semantic search] \hfill \\ Unlike syntactic matching or simple term frequency calculations, semantic search engines aim to understand the underlying meaning of a search query. They strive to retrieve documents that are closely related to the query in the semantic space, taking into account the contextual understanding of the query~\cite{dong2008survey}.
 	
@@ -38,7 +38,7 @@ This section provides explanations of several key technologies utilized in the p
 	
 	\item[FAISS] \hfill \\ \ac{FAISS}, a library specifically designed for efficient similarity search and it is employed in this thesis to store document embeddings. The semantic search system developed in this research uses \ac{FAISS}. As a ranking function, \ac{FAISS} utilizes L2 euclidean distance to measure the similarity between the query and documents~\cite{githubGitHubFacebookresearchfaiss}. In this thesis, the output of this distance function is further refined by re-ordering it based on cosine similarities.
 	
-	\item[News article] \hfill \\ A news article, which is considered a text document, is typically published by a news website. \prettyref{fig:sample_newsarticle} provides an example of a news article. In this master thesis, the terms 'news article' and 'text document' are used interchangeably to refer to the same concept.
+	\item[News article] \hfill \\ A news article, which is considered a text document, is typically published by a news website. \prettyref{fig:sample_newsarticle} provides an example of a news article. In this master thesis, the terms \emph{news article} and \emph{text document} are used interchangeably to refer to the same concept.
 	
 	\begin{figure}[h!]
 		\centering
@@ -46,11 +46,11 @@ This section provides explanations of several key technologies utilized in the p
 		\caption[News article example.]{A sample news article from the document database~\cite{sample_news_article}.\label{fig:sample_newsarticle}}
 	\end{figure} 
 	
-	\item[Web scraping] \hfill \\ Web scraping refers to the automated extraction of data from websites~\cite{khder2021web}. When dealing with text data, various approaches involve downloading structured HTML webpages and extracting the required information. In this master thesis, news articles from different websites are scraped using the framework Scrapy\footnote{\url{https://scrapy.org/}}.  
+	\item[Web scraping] \hfill \\ Web scraping refers to the process of extracting useful information from websites~\cite{khder2021web}. When dealing with text data, various approaches involve downloading structured \ac{HTML} webpages and extracting the required information. In this master thesis, news articles from different websites are scraped using the framework Scrapy\footnote{\url{https://scrapy.org/}}.  
 	
 	\item[Candidate pool] \hfill \\ The candidate or retrieval pool refers to a collection of documents obtained from lexical and semantic matching results for a specific user query. These documents show diversity and often contain keywords that are present in the query or have semantic similarity to them. The retrieval pool serves as a basis for subsequent clustering analysis.
 	
-	\item[Sub-topic] \hfill \\ Sub-topics are intermediate representations of a document that provide more granular information. Since news articles are typically lengthy texts and cannot be logically associated with a single topic or keyword. Therefore, sub-topics are derived to capture distinct aspects within them. In the context of the "Retriever", if the user query is regarded as the main topic, the sub-topics correspond to the distinctive topics extracted from the candidate pool. In this master thesis, the terms "sub-topic" and "cluster" are used interchangeably. 
+	\item[Sub-topic] \hfill \\ Sub-topics are intermediate representations of a document that provide more granular information. Since news articles are typically lengthy texts and cannot be logically associated with a single topic or keyword. Therefore, sub-topics are derived to capture distinct aspects within them. In the context of the \emph{Retriever}, if the user query is regarded as the main topic, the sub-topics correspond to the distinctive topics extracted from the candidate pool. In this master thesis, the terms \emph{sub-topic} and \emph{cluster} are used interchangeably. 
 	
 	\item[Query type] \hfill \\ The user's search queries can take various forms and in this master thesis, each specific form is referred to as a query type. All possible user queries can be categorized into two major query types: phrase (three words or less) and sentence queries.
 	
@@ -58,7 +58,7 @@ This section provides explanations of several key technologies utilized in the p
 
 \section{Existing Work}
 
-A document retrieval system was developed to assist users at \ac{FKIE} in accessing news articles related to technology and military subjects. The retrieval system comprises three main components: the "Web scraper", the "Document filter", and the "Retriever", as illustrated in \prettyref{fig:background_image}.
+A document retrieval system was developed to assist users at \ac{FKIE} in accessing news articles related to technology and military subjects. The retrieval system comprises three main components: \emph{Web scraper}, \emph{Document filter}, and \emph{Retriever}, as illustrated in \prettyref{fig:background_image}.
 
 \begin{figure}[h]
 	\centering
@@ -66,9 +66,9 @@ A document retrieval system was developed to assist users at \ac{FKIE} in access
 	\caption[Existing work developed at FKIE.]{Document retrieval system designed at FKIE. \label{fig:background_image}}
 \end{figure}
 
-The first component, known as the "Web scraper", retrieves news articles in the form of HTML files from a predefined list of URLs. It then proceeds to clean the raw HTML data by removing advertisements and other irrelevant content. Each cleaned news article is treated as an individual entity referred to as a "Document". The majority of downloaded documents cover a range of topics including military, technology, artificial intelligence, and other typical news subjects like politics, sports, and advertisements. These news articles are available in both German and English.
+The first component, known as the \emph{web scraper}, retrieves news articles in the form of \ac{HTML} files from a predefined list of \ac{URL}s. It then proceeds to clean the raw \ac{HTML} data by removing advertisements and other irrelevant content. Each cleaned news article is treated as an individual entity referred to as a \emph{Document}. The majority of downloaded documents cover a range of topics including military, technology, artificial intelligence, and other typical news subjects like politics, sports, and advertisements. These news articles are available in both German and English.
 
-The second component, referred to as the "Document filter", employs a \ac{SVM} classifier to filter out irrelevant documents that are not related to specific news topics. The documents are classified into two distinct classes: "Positive" and "Negative". Positive documents are news articles related to technology and military topics, while the negative documents cover all other subjects. Various features from different techniques, such as noun chunks, verbs, adjectives, and fine-tuning of \ac{BERT} models, have been evaluated. The results indicate that features derived from noun chunks in a document yield the best performance in distinguishing between positive and negative documents. Noun chunk features based on the pre-trained multi-lingual \ac{USE} are utilized for the classification task.
+The second component, referred to as the \emph{document filter}, employs a \ac{SVM} classifier to filter out irrelevant documents that are not related to specific news topics. The documents are classified into two distinct classes: \emph{Positive} and \emph{Negative}. Positive documents are news articles related to technology and military topics, while the negative documents cover all other subjects. Various features from different techniques, such as noun chunks, verbs, adjectives, and fine-tuning of \ac{BERT} models, have been evaluated. The results indicate that features derived from noun chunks in a document yield the best performance in distinguishing between positive and negative documents. Noun chunk features based on the pre-trained multi-lingual \ac{USE} are utilized for the classification task.
 
 \begin{figure}[h]
 	\centering
@@ -76,15 +76,15 @@ The second component, referred to as the "Document filter", employs a \ac{SVM} c
 	\caption[Search user interface.]{User interface to retrieve documents for FKIE users. \label{fig:mitera_search}}
 \end{figure}
 
-The positive documents obtained from the "Document filter" stage are stored in two separate document indices, namely the inverted index and the semantic search index (see definitions above and Appendix \ref{appendix:A} for more details). To retrieve documents for a given user query, a dedicated "Retriever" component has been developed, which utilizes both indices and employs lexical and semantic matching techniques. The retrieval process is assisted through a user-friendly web interface, as depicted in \prettyref{fig:mitera_search}. A total of 327,421 news articles were initially scraped, and after applying the document filtering, 26,954 news articles were stored in the document indices. These stored documents are further used in the retrieval process.
+The positive documents obtained from the \emph{document filter} stage are stored in two separate document indices, namely the inverted index and the semantic search index (see definitions above and Appendix \ref{appendix:A} for more details). To retrieve documents for a given user query, a dedicated \emph{Retriever} component has been developed, which utilizes both indices and employs lexical and semantic matching techniques. The retrieval process is assisted through a user-friendly web interface, as depicted in \prettyref{fig:mitera_search}. A total of 327,421 news articles were initially scraped, and after applying the document filtering, 26,954 news articles were stored in the document indices. These stored documents are further used in the retrieval process.
 
 
 \section{Problem Description}
 
-Semantic matching is particularly effective when dealing with long sentence queries due to the contextual information embedded in the search query. For example, a detailed query such as \textit{What are the technological advancements in Robotics related to Unmanned Weapon Systems?} yields high-quality results in the top search results, as it provides specific and comprehensive information requirements. However, in case of keyword queries, semantic and lexical matching approaches tend to generate numerous false positives and offer no significant advantages. This issue of false positives and lack of uniqueness in lexical matching was also observed by Kuzi et al.~\cite{kuzi2020leveraging} in their research.
+Semantic matching is particularly effective when dealing with long sentence queries due to the contextual information embedded in the search query. For example, a detailed query such as \emph{What are the technological advancements in Robotics related to Unmanned Weapon Systems?} yields high-quality results in the top search results, as it provides specific and comprehensive information requirements. However, in case of keyword queries, semantic and lexical matching approaches tend to generate numerous false positives and offer no significant advantages. This issue of false positives and lack of uniqueness in lexical matching was also observed by Kuzi et al.~\cite{kuzi2020leveraging} in their research.
 
 
- Lexical matching does not consider the inherent meaning of the word causing a vocabulary mismatch problem especially in case of polysemy, synonymy. For example, the words "Vehicle," "Automobile," and "Car" essentially refer to the same thing, but lexical matching techniques fail to establish their relationship. Conversely, semantic matching may retrieve a large number of documents that match the query keywords semantically, but it often fails to present the most relevant documents in the top search results. A manual observation of retrieved results is carried out with a set of sample queries to evaluate the retrieval algorithms,and the results are shared in \prettyref{tab:ir_system_comparison}.
+ Lexical matching does not consider the inherent meaning of the word causing a vocabulary mismatch problem especially in case of polysemy, synonymy. For example, the words ``Vehicle,'' ``Automobile,'' and ``Car'' essentially refer to the same thing, but lexical matching techniques fail to establish their relationship. Conversely, semantic matching may retrieve a large number of documents that match the query keywords semantically, but it often fails to present the most relevant documents in the top search results. A manual observation of retrieved results is carried out with a set of sample queries to evaluate the retrieval algorithms,and the results are shared in \prettyref{tab:ir_system_comparison}.
 
 
 
@@ -112,7 +112,7 @@ Semantic matching is particularly effective when dealing with long sentence quer
 	\end{tabularx}
 \end{center}
 
-The users at \ac{FKIE} typically provide concise phrase queries which usually consists of just one or two words. Their intention is to explore information related to specific topics such as "Technology" and "Military". However, learning the user's intention solely based on a single word or phrase query poses a significant challenge in the absence of labeled data. Additionally, another obstacle arises from the diverse range of information sources, which can result in high levels of noise and an increased likelihood of encountering false positives. As a consequence, users are less likely to find the relevant documents among the top search results. 
+The users at \ac{FKIE} typically provide concise phrase queries which usually consists of just one or two words. Their intention is to explore information related to specific topics such as \emph{Technology} and \emph{Military}. However, learning the user's intention solely based on a single word or phrase query poses a significant challenge in the absence of labeled data. Additionally, another obstacle arises from the diverse range of information sources, which can result in high levels of noise and an increased likelihood of encountering false positives. As a consequence, users are less likely to find the relevant documents among the top search results. 
 
 
 \begin{figure}[h]
@@ -143,7 +143,7 @@ Unlike tweets or abstract natural language requirements, news articles are lengt
 \end{center}
 
 
-One approach to enhance the context of a search query is by utilizing a template-based search query. This involves using a predefined template, such as "Innovations in XXX related to the Military."  When the user provides a query such as "Robotics," the "XXX" in the template is replaced with the user's query, resulting in the final query, "Innovations in Robotics related to Military." This template can be dynamically updated based on the user's interests through the user interface, allowing for customized results without the need for additional training. However, this approach has limitations as it restricts users to a limited set of templates and can be inefficient when adding new templates or updating existing ones.
+One approach to enhance the context of a search query is by utilizing a template-based search query. This involves using a predefined template, such as \emph{Innovations in XXX related to the Military}.  When the user provides a query such as \emph{Robotics} the ``XXX'' in the template is replaced with the user's query, resulting in the final query, \emph{Innovations in Robotics related to Military}. This template can be dynamically updated based on the user's interests through the user interface, allowing for customized results without the need for additional training. However, this approach has limitations as it restricts users to a limited set of templates and can be inefficient when adding new templates or updating existing ones.
 
 
 \mycomment{\begin{center}
@@ -179,7 +179,7 @@ The documents retrieved for certain queries are organized into clusters based on
 
 Conversely, selecting parameters that produce fewer representations results in larger individual clusters containing more documents. This, in turn, leads to document repetition within the clusters. After evaluating various approaches to address this issue, it is observed that extracting unique contexts in an unsupervised manner from the top results of a user query is more efficient, explainable, and reproducible compared to supervised approaches. This approach not only provides users with deeper insights into the results but also reduces the effort required to find highly relevant documents. 
 
-\prettyref{fig:proposal_idea} presents a sample output of the expected context extraction pipeline, where the extracted unique contexts are referred to as "sub-topics". The proposed approach in this master thesis aims to tackle the aforementioned challenges and generate highly diverse sub-topics. It considers news articles from diverse sources and can be easily adapted to other sources containing long text documents.
+\prettyref{fig:proposal_idea} presents a sample output of the expected context extraction pipeline, where the extracted unique contexts are referred to as \emph{sub-topics}. The proposed approach in this master thesis aims to tackle the aforementioned challenges and generate highly diverse sub-topics. It considers news articles from diverse sources and can be easily adapted to other sources containing long text documents.
 
 
 

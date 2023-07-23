@@ -2,7 +2,7 @@
 
 \chapter{Experiment Results}
 
-In this chapter, the evaluation results are shared, and the three research questions are answered. Similar to the experiment setup, the experiment results are divided into three sections, namely "Clustering Results Evaluation", "Survey Results Evaluation", and "Precision Analysis Results". A few experiment results are separately shared according to different sizes of the candidate document pool. Moreover, the ineffectiveness of certain experiment results is assessed with critical reasoning. The section "Precision Analysis Results" shares the outcome of the exploratory analysis and literature comparison.
+In this chapter, the evaluation results are shared, and the three research questions are answered. Similar to the experiment setup, the experiment results are divided into three sections, namely \emph{Clustering Results Evaluation}, \emph{Survey Results Evaluation}, and \emph{Precision Analysis Results}. A few experiment results are separately shared according to different sizes of the candidate document pool. Moreover, the ineffectiveness of certain experiment results is assessed with critical reasoning. The section \emph{Precision Analysis Results} shares the outcome of the exploratory analysis and literature comparison.
 
 \section{Clustering Results Evaluation}
 
@@ -10,7 +10,7 @@ As the testset contains 17 user queries and the clustering analysis is performed
 
 \subsection{Clustering Output Analysis}
 
-The sub-topic modeling pipeline is tested on all the hyperparameters of clustering mentioned in Section 6.4.3. Ideally, there should be 1,710 cases to test the clustering output for small and large candidate pools. However, a few test cases have produced very low clustering (only one cluster) and are not considered in the parameter selection. Ultimately, 1,588 and 1,009 possible hyperparameter combinations are evaluated for large and small candidate pools, respectively. The clustering output consisting of the evaluation metrics, is expressed as the mean over all 17 queries. Furthermore, the analysis is shared separately for the small and large candidate pools. In the analysis below, "silhouette score" denotes the intrinsic evaluation metric, and "targeted negative document ratio" signifies the extrinsic evaluation metric that denotes the quality of separation between relevant and irrelevant clusters.
+The sub-topic modeling pipeline is tested on all the hyperparameters of clustering mentioned in Section 6.4.3. Ideally, there should be 1,710 cases to test the clustering output for small and large candidate pools. However, a few test cases have produced very low clustering (only one cluster) and are not considered in the parameter selection. Ultimately, 1,588 and 1,009 possible hyperparameter combinations are evaluated for large and small candidate pools, respectively. The clustering output consisting of the evaluation metrics, is expressed as the mean over all 17 queries. Furthermore, the analysis is shared separately for the small and large candidate pools. In the analysis below, \emph{silhouette score} denotes the intrinsic evaluation metric, and \emph{targeted negative document ratio} signifies the extrinsic evaluation metric that denotes the quality of separation between relevant and irrelevant clusters.
 
 \ac{HDBSCAN} clustering does not require any parameter to specify the number of clusters created from the data. On the other hand,  hyperparameters need to be well chosen to generate better clusters. Before evaluating the parameters that significantly affect the clustering output, the relation between the evaluation metrics and the number of clusters is analyzed.  \prettyref{fig:silhouette_score_vs_cc} shows the relationship between the silhouette score and the number of clusters. The data is generated when all the hyperparameter possibilities of the clustering pipeline are tested over the testset queries.
 
@@ -53,7 +53,7 @@ It is assumed that the heterogeneity or diversity of clusters can be derived fro
 \prettyref{fig:target_function_vs_cc} shows the relationship between the targeted negative document score and the number of clusters. Similar to the silhouette score, a higher cluster count positively correlates with the targeted document ratio. The design of this evaluation metric slightly favors clustering outputs with a high cluster count, as it creates many clusters with a low number of data points and results in greater separation between clusters. Consequently, fewer clusters indicate poorer cluster quality due to inadequate separation between the documents. Therefore, this metric needs to be relatively higher in order to create a diverse set of clusters with good separation. The large candidate pool has a better silhouette score and targeted negative document ratio compared to the small candidate pool. Since labels for all documents in the large candidate pool are unknown, the actual scores could be even higher than those presented.
 
 \subsection{Candidate Keyword Selection Analysis}
-This section explores the impact of the Candidate keyword selection ($cks$) parameter on the clustering output, specifically regarding keyword selection. This analysis is crucial for finalizing the parameter selection. The $cks$ parameter ranges from 10 to 100, with values incrementing by 5, signifying the percentile selection based on query similarity. 
+This section explores the impact of the candidate keyword selection ($cks$) parameter on the clustering output, specifically regarding keyword selection. This analysis is crucial for finalizing the parameter selection. The $cks$ parameter ranges from 10 to 100, with values incrementing by 5, signifying the percentile selection based on query similarity. 
 
 The keywords selected using the $cks$ parameter are further clustered using \ac{HDBSCAN}. One of the main objectives of this master thesis is to test the effectiveness of clustering with keyword selection compared to no selection. The data used in this analysis is generated from clustering results for all possible parameter combinations in the hyperparameter set over the testset queries. The x-axis represents the candidate keyword selection, and the y-axis represents the mean of the respective evaluation metrics.
 
@@ -142,7 +142,7 @@ The proposed methodology clusters keywords within a document rather than cluster
 			\hline
 			80 & 0.18  \\
 			\hline
-			100 & 0.09  \\
+			100 & \textbf{0.09}  \\
 			\hline
 		\end{tabularx} &  % starting rightmost sub table
 		% table 2
@@ -158,7 +158,7 @@ The proposed methodology clusters keywords within a document rather than cluster
 			\hline
 			80 & 0.11  \\
 			\hline
-			100 & 0.01  \\
+			100 & \textbf{0.01}  \\
 			\hline
 		\end{tabularx} \\
 	\end{tabular}
@@ -170,7 +170,7 @@ The proposed methodology clusters keywords within a document rather than cluster
 \subsection{Parameter Selection Analysis}
 
 
-This section details the clustering performance for the top-5 parameters when considered individually. In the earlier analysis, the results are grouped over the candidate keyword selection ($cks$) parameter. \prettyref{tab:parameter_sel_small} details the hyperparameters and respective objective function scores for the small candidate pool. There is a huge variation in the "minimum samples" parameter among the top-5 results. This parameter implies the minimum number of data points in a cluster. A value of 1 signifies that a minimum of one data point can create a cluster. However, this would result in many clusters with very few data points, leading to poor clustering despite the evaluation metrics showing better performance. The change in the $cks$ parameter between the values 90, 95, and 100 might not have a significant impact on the clustering output, as the number of selected keywords lies within the 5th percentile can be very low.
+This section details the clustering performance for the top-5 parameters when considered individually. In the earlier analysis, the results are grouped over the candidate keyword selection ($cks$) parameter. \prettyref{tab:parameter_sel_small} details the hyperparameters and respective objective function scores for the small candidate pool. There is a huge variation in the \emph{minimum samples} parameter among the top-5 results. This parameter implies the minimum number of data points in a cluster. A value of 1 signifies that a minimum of one data point can create a cluster. However, this would result in many clusters with very few data points, leading to poor clustering despite the evaluation metrics showing better performance. The change in the $cks$ parameter between the values 90, 95, and 100 might not have a significant impact on the clustering output, as the number of selected keywords lies within the 5th percentile can be very low.
 
 \begin{center}
 	\captionof{table}[Objective score analysis for CP-30.]{Objective score analysis over the parameters for the small candidate pool.}\label{tab:parameter_sel_small}
@@ -208,7 +208,8 @@ This section details the clustering performance for the top-5 parameters when co
 	
 \end{center}
 
-Comparatively, the parameters such as reduced dimensions and minimum cluster size have very little variation. \prettyref{tab:parameter_sel_small} shares similar data for the large candidate pool. From this data, a higher minimum sample of 10 shows better clustering results, contrary to the small candidate pool. To generate a diverse clustering output, the cluster size should be relatively larger rather than very small clusters. Small clusters are generated when a minimum of one or three data points can be considered as noise clusters and are not desired. From both candidate pools, a minimum cluster size of 20 and a reduced dimension of 5 can be chosen for the final parameter selection. The final parameters selected after this analysis are shown in \prettyref{tab:ideal_parameters}.
+Comparatively, the parameters such as reduced dimensions and minimum cluster size have very little variation. \prettyref{tab:parameter_sel_small} shares similar data for the large candidate pool. From this data, a higher minimum sample of 10 shows better clustering results, contrary to the small candidate pool. To generate a diverse clustering output, the cluster size should be relatively larger rather than very small clusters. Small clusters are generated when a minimum of one or three data points can be considered as noise clusters and are not desired. From both candidate pools, a minimum cluster size of 20 and a reduced dimension of 5 can be chosen for the final parameter selection. The final parameters selected after this analysis are shown in \prettyref{tab:ideal_parameters}.\\
+
 
 
 \begin{center}
@@ -230,13 +231,13 @@ Comparatively, the parameters such as reduced dimensions and minimum cluster siz
 
 \subsection{Manual Interpretation of Results}
 
-After selecting the parameters by observing the clustering performance for both the small and large candidate pools, a manual evaluation is performed on the large candidate pool. The clustering results provide deep insights into the candidate pool. However, it is also observed that the effectiveness of the selected parameters in generating heterogeneous clusters still needs to be improved (not achieved through automatic parameter selection). The main reason for the poor clustering results in terms of diversity is the absence of keyword selection, i.e., $cks$ = 100. Generating deep clusters while maintaining cluster uniqueness is a challenging task. Evaluation metrics need to be more successful in capturing this problem. A manual analysis is carried out on multiple clustering outputs using the parameters mentioned in \prettyref{tab:ideal_parameters} and different values of the $cks$ parameter.
+After selecting the parameters by observing the clustering performance for both the small and large candidate pools, a manual evaluation is performed on the large candidate pool. The clustering results provide deep insights into the candidate pool. However, it is also observed that the effectiveness of the selected parameters in generating heterogeneous clusters still needs to be improved (not achieved through automatic parameter selection). The main reason for the poor clustering results in terms of diversity is the absence of keyword selection, i.e., $cks$ = 100. Generating deep clusters while maintaining cluster uniqueness is a challenging task. 
  
  \begin{center}
- 	\captionof{table}[Manual clustering output analysis.]{Manual clustering output analysis for the Query "5G" with different cks parameters. }\label{tab:5G_output}
+ 	\captionof{table}[Manual clustering output analysis.]{Manual clustering output analysis for the Query 5G with different cks parameters. }\label{tab:5G_output}
  	\begin{tabularx}{.99\textwidth}{|c|c|Y|}
  		\hline
- 		Cks parameter & Number of cluster & Sub-topics (clusters)\\
+ 		Cks parameter & Number of clusters & Sub-topics (clusters)\\
  		\hline
  		
  		100 &          34 & 5G, 5G network, Frequenzspektrum, 5G deployment, China, Defence intelligence, Nokia, Berlin, Mobilfunkmast, Telekom, Gigabit speed, 4G, WiFi, UMTS, Military, Fiberoptic broadband, 5G technology, Vodafone, Experimentation testing, Mobilfunknetzbetreiber, Technologie, Netzwerk, LTE, Smartphones, Netz, Aircraft, 5G service, Data cap, Deutsche Telekom, Telefónica, Apple, Gebiet, Netzausbau, Anbieter \\  \hline
@@ -248,7 +249,7 @@ After selecting the parameters by observing the clustering performance for both 
   \end{center}
  
  
-The results of one query, namely "5G," are presented in \prettyref{tab:5G_output}. The sub-topics generated when no keywords are selected are highly redundant and may not be useful to the users, as they have less significance. For example, the sub-topics "5G" and "5G network" are very similar and might lead to the same set of documents. The objective of creating unique pathways from the user query to retrieved documents is not achieved. The clustering output using the 75th percentile similarity selection shows a similar clustering result. The practicality of sub-topics in the real world is only successful when the clusters are unique and diverse. On the other hand, the clustering outputs for the $cks$ parameters of 25 and 50 are unique, a significant amount of keywords similar to the query have been removed. However, there is a high chance of missing documents in this scenario.
+A manual analysis is carried out on multiple clustering outputs using the parameters mentioned in \prettyref{tab:ideal_parameters} and different values of the $cks$ parameter. The results of one query, namely \emph{5G} are presented in \prettyref{tab:5G_output}. The sub-topics generated when no keywords are selected are highly redundant and may not be useful to the users, as they have less significance. For example, the sub-topics "5G" and ``5G network'' are very similar and might lead to the same set of documents. The objective of creating unique pathways from the user query to retrieved documents is not achieved. The clustering output using the 75th percentile similarity selection shows a similar clustering result. The practicality of sub-topics in the real world is only successful when the clusters are unique and diverse. On the other hand, the clustering outputs for the $cks$ parameters of 25 and 50 are unique, a significant amount of keywords similar to the query have been removed. However, there is a high chance of missing documents in this scenario.
  
  
  \begin{center}
@@ -270,7 +271,6 @@ The results of one query, namely "5G," are presented in \prettyref{tab:5G_output
 \prettyref{fig:target_function_vs_csk} shows a downward trend in the targeted negative document ratio at $cks$ = 60 for the small candidate pool. This signifies that there is better separation between the clusters at $cks$ = 60, and then it decreases for higher $cks$ values. However, only the larger candidate pool results are analyzed manually, rather than the small candidate pool. Despite this difference, the information from the small candidate pool can be partly helpful, as it uses the labeled information. Therefore, a 65th percentile similarity selection is chosen after a manual analysis of several queries. The results of the manual parameter selection with $cks$ = 65 are shared in \prettyref{tab:65_output}. 
 
 There are still some redundant clusters at this selection, but the results are better than with higher selection values. The choice of this particular 65th percentile selection is not only due to the heterogeneity of clusters but also to minimize the loss of documents during modeling. Similarly, an 85th percentile selection is chosen for the smaller candidate pool. The final parameters through the manual selection are presented in \prettyref{tab:manual_parameter_selection}. Furthermore, the results from the 65th percentile selection are evaluated during the survey feedback and are shared in upcoming sections.
-\\
 \\
  
  \begin{center}
@@ -336,7 +336,7 @@ It is evident from \prettyref{tab:keyword_analysis}, that the large candidate po
 
  \subsection{Document Repetition Analysis}
  
-The proposed approach in this master thesis assigns a news article to multiple clusters according to their keyword information. This approach can lead to poor modeling of documents when several documents appear in many clusters. There is a possibility of users getting annoyed by reading the same documents in multiple clusters. Therefore, a high document repetition in clusters is considered poor modeling. To evaluate this scenario in the case of the proposed candidate keyword selection approach, an evaluation metric, namely \textit{\ac{MCC}}, is proposed. 
+The proposed approach in this master thesis assigns a news article to multiple clusters according to their keyword information. This approach can lead to poor modeling of documents when several documents appear in many clusters. There is a possibility of users getting annoyed by reading the same documents in multiple clusters. Therefore, a high document repetition in clusters is considered poor modeling. To evaluate this scenario in the case of the proposed candidate keyword selection approach, an evaluation metric, namely \emph{\ac{MCC}}, is proposed. 
 
 The cluster count of a document $CC_d$ is calculated as the number of clusters that contain the document $d$. The query cluster count of a query $QCC_q$ is calculated as the mean of cluster counts over all documents $J$ clustered for the query $q$. Similarly, \ac{MCC} is calculated as the mean of $QCC_q$ over all $N$ queries in the testset.
 
@@ -358,7 +358,7 @@ The cluster count of a document $CC_d$ is calculated as the number of clusters t
 		\hline
 		75 & 2.93 \\
 		\hline
-		50 & \textit{2.23} \\
+		50 & \emph{2.23} \\
 		\hline
 		25 & 1.46 \\
 		\hline
@@ -386,7 +386,7 @@ This pattern observed in CP-30 does not hold true for the large candidate pool. 
 
 \section{Survey Results Evaluation}
 
-The survey aims to evaluate the clustering output and the effectiveness of sub-topics in finding relevant documents. A survey questionnaire with two unique retrieval systems and five questions is developed and evaluated by taking feedback from real users. The retrieval systems used in the survey use not only the query but also the sub-topic. The comparison is made to observe the system that represents both user inputs efficiently. A template, namely \textit{"Innovation in~\textbf{Query} and~\textbf{Sub-topic}"}, is used in both approaches to either retrieve or re-rank the news articles. A brief description of retrieval systems A and B is shared below.
+The survey aims to evaluate the clustering output and the effectiveness of sub-topics in finding relevant documents. A survey questionnaire with two unique retrieval systems and five questions is developed and evaluated by taking feedback from real users. The retrieval systems used in the survey use not only the query but also the sub-topic. The comparison is made to observe the system that represents both user inputs efficiently. A template, namely \emph{Innovation in~\textbf{Query} and~\textbf{Sub-topic}}, is used in both approaches to either retrieve or re-rank the news articles. A brief description of retrieval systems A and B is shared below.
 
 \begin{description}
 	\item[System A] Retrieve new-articles using the sub-topic clustering output and then re-rank the retrieved results using template similarity.
@@ -435,7 +435,7 @@ The number of participants in each question is calculated by the \ac{UUID} recor
 
 \subsection{Subtopic Clustering Response Analysis}
 
-The participants are asked to share feedback on the clustering results in this question. The quality of clusters is evaluated using the distinctiveness and readability of clusters. The results from the survey for this question are shared in \prettyref{fig:question_1_piechart}. The majority of the participants, around 44 percent, agree that the retrieved sub-topics are \textit{distinctive and not well-labeled}. Moreover, only 6 percent of the participants admit that the retrieved sub-topics are \textit{not distinctive and well-labeled}.
+The participants are asked to share feedback on the clustering results in this question. The quality of clusters is evaluated using the distinctiveness and readability of clusters. The results from the survey for this question are shared in \prettyref{fig:question_1_piechart}. The majority of the participants, around 44 percent, agree that the retrieved sub-topics are \emph{distinctive and not well-labeled}. Moreover, only 6 percent of the participants admit that the retrieved sub-topics are \emph{not distinctive and well-labeled}.
 
 \begin{figure}[h]
 	\centering
@@ -456,7 +456,7 @@ It is evident from \prettyref{fig:question_1_barplot}, that most of the survey p
 
 \subsection{System Comparison Response Analysis}
 
-These questions are targeted to evaluate the two IR systems developed to represent the retrieved documents. System A retrieves news articles using the sub-topic modeling output and re-ranks them using a dynamic template, while System B retrieves news articles with a new query request to the semantic index using the same template. Furthermore, quantitative ratings ranging from 0 to 10 are collected for both systems. Some participants have provided false inputs, and these inputs are considered anomalies. These anomaly feedback inputs for questions 2, 3, and 4 are removed from the analysis. One such feedback is observed and shared in \prettyref{tab:question_234_anamoly}. It is clear that the user has provided a lower rating for System B than for System A. However, the user has chosen System B as the better system, which clearly contradicts the individual ratings.
+These questions are targeted to evaluate the two IR systems developed to represent the retrieved documents. System A retrieves news articles using the sub-topic modeling output and re-ranks them using a dynamic template, while system B retrieves news articles with a new query request to the semantic index using the same template. Furthermore, quantitative ratings ranging from 0 to 10 are collected for both systems. Some participants have provided false inputs, and these inputs are considered anomalies. These anomaly feedback inputs for questions 2, 3, and 4 are removed from the analysis. One such feedback is observed and shared in \prettyref{tab:question_234_anamoly}. It is clear that the user has provided a lower rating for system B than for system A. However, the user has chosen system B as the better \ac{IR} system, which clearly contradicts the individual ratings.
 
 
  \begin{center}
@@ -470,7 +470,7 @@ These questions are targeted to evaluate the two IR systems developed to represe
 	\end{tabularx}
 \end{center} 
 
-Participants are requested to answer a qualitative comparison between the two systems, and the results are shared in \prettyref{tab:question_2_results}. After removing the anomalies, it is evident from \prettyref{tab:question_2_results} that most participants have agreed that System A retrieves documents better than System B. This result is derived from the qualitative inputs of the survey. However, it is crucial to determine the significance of this result through the quantitative inputs, i.e., system ratings.\\
+Participants are requested to answer a qualitative comparison between the two systems, and the results are shared in \prettyref{tab:question_2_results}. After removing the anomalies, it is evident from \prettyref{tab:question_2_results} that most participants have agreed that system A retrieves documents better than system B. This result is derived from the qualitative inputs of the survey. However, it is crucial to determine the significance of this result through the quantitative inputs, i.e., system ratings.\\
 
 \begin{center}
 	\captionof{table}{System comparison response results.}\label{tab:question_2_results}
@@ -485,7 +485,7 @@ Participants are requested to answer a qualitative comparison between the two sy
 	\hline
 	System B & 0 \\
 	\hline
-	Neither System A nor System B & 4 \\
+	Neither system A nor system B & 4 \\
 	\hline
 	
 \end{tabularx} &  % starting rightmost sub table
@@ -503,7 +503,7 @@ Participants are requested to answer a qualitative comparison between the two sy
 	\end{tabular}
 \end{center}
 
-\prettyref{tab:question_2_results} shows that System A has a better mean than System B, and there is no significant difference in the standard deviation. Individual system ratings are plotted in a histogram and presented in \prettyref{fig:histograms}. These distributions clearly show that System B ratings are more concentrated towards lower values and follow a right-skewed distribution. On the other hand, System A ratings are not concentrated at a certain level but rather follow a positive trend with some high ratings.
+\prettyref{tab:question_2_results} shows that system A has a better mean than system B, and there is no significant difference in the standard deviation. Individual system ratings are plotted in a histogram and presented in \prettyref{fig:histograms}. These distributions clearly show that system B ratings are more concentrated towards lower values and follow a right-skewed distribution. On the other hand, system A ratings are not concentrated at a certain level but rather follow a positive trend with some high ratings.
 
 \begin{figure}[h]
 	\centering
@@ -517,9 +517,9 @@ The significance of one system performing better than the other can be evaluated
 
 
 \begin{enumerate}
-	\item \textbf{Null Hypothesis ($H_0$)}: The median difference between the samples, namely "System A" and "System B" ratings is zero.
+	\item \textbf{Null Hypothesis ($H_0$)}: The median difference between the samples, namely system A and system B ratings is zero.
 	
-	\item \textbf{Alternate Hypothesis ($H_1$)}:  The median difference between the samples, namely "System A" and "System B" ratings is not zero.
+	\item \textbf{Alternate Hypothesis ($H_1$)}:  The median difference between the samples, namely system A and system B ratings is not zero.
 \end{enumerate}
 
 The hypothesis is based on whether the median difference is equal to zero or not, rather than being compared to a specific value. Thus, this is referred to as a two-tailed test. Before performing the statistical testing, it is crucial to choose the confidence level and the test statistic. A confidence level of 95\% is chosen, i.e., a significance level ($\alpha$) of 0.05, and for the test statistic, the z-score is selected. \prettyref{fig:z_score} shows the acceptance and rejection regions for the significance level $\alpha$ = 0.05. If the test score is lower than -1.96 or greater than 1.96, the null hypothesis should be rejected, and the alternative hypothesis should be accepted. In any other case, the null hypothesis must be accepted.
@@ -528,16 +528,16 @@ The hypothesis is based on whether the median difference is equal to zero or not
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.75\textwidth]{images/outside/z_score.PNG}
-	\caption[Rejection regions for z test-statistic.]{Rejection regions for a significance level of 0.05 and z test-statistic. \cite{article} \label{fig:z_score}}
+	\caption[Rejection regions for z test-statistic.]{Rejection regions for a significance level of 0.05 and z test-statistic~\cite{article}. \label{fig:z_score}}
 \end{figure}
 
 
 
-The test statistic is calculated using the python library \textit{researchpy}\footnote{\url{https://researchpy.readthedocs.io/en/latest/index.html}}. The calculated z-score is 4.06, and the test score is larger than the critical value of 1.96. Therefore, the null hypothesis is rejected, and the alternative hypothesis is accepted. This means that the system ratings are significantly different, and System A retrieves better news articles related to the user query and the sub-topic. This concludes the system comparison by suggesting that retrieval using the sub-topic modeling output has performed better than a new query retrieval for a given query and sub-topic.
+The test statistic is calculated using the python library \emph{researchpy}\footnote{\url{https://researchpy.readthedocs.io/en/latest/index.html}}. The calculated z-score is 4.06, and the test score is larger than the critical value of 1.96. Therefore, the null hypothesis is rejected, and the alternative hypothesis is accepted. This means that the system ratings are significantly different, and system A retrieves better news articles related to the user query and the sub-topic. This concludes the system comparison by suggesting that retrieval using the sub-topic modeling output has performed better than a new query retrieval for a given query and sub-topic.
 
 \subsection{System Comparison Query Analysis}
 
-The system comparison is statistically evaluated, with the conclusion that System A represents the news articles better based on the sub-topic clustering output. However, the mean system A ratings from the participants are around 5.46, which is not high on a scale of 10. From \prettyref{fig:histograms}, it is evident that a few responses for System A are high, while the other ratings are very low. To understand the user responses, the high and low ratings of System A are analyzed. The query and sub-topics used for System A are presented in \prettyref{tab:queries_question_234}.\\
+The system comparison is statistically evaluated, with the conclusion that system A represents the news articles better based on the sub-topic clustering output. However, the mean system A ratings from the participants are around 5.46, which is not high on a scale of 10. From \prettyref{fig:histograms}, it is evident that a few responses for system A are high, while the other ratings are very low. To understand the user responses, the high and low ratings of system A are analyzed. The query and sub-topics used for system A are presented in \prettyref{tab:queries_question_234}.\\
 \\
 
 \begin{center}
@@ -579,11 +579,11 @@ The system comparison is statistically evaluated, with the conclusion that Syste
 	\end{tabular}
 \end{center}
 
-From the bottom 25 percentile System A ratings, it can be observed that the sub-topics chosen for retrieving news articles are unusual and not well related to the query. For example, the sub-topic \textit{Projekt} is too generic for a military query keyword such as \textit{Main Ground Combat System}. Similarly, the sub-topics \textit{March, SOSA, Operationsführung} lead to poor results as they do not effectively represent the sub-topic clusters. This pattern aligns with earlier observations where the majority of participants chose 'Not well-labeled' for the sub-topics. The sub-topic labeling is created using a centroid-based approach, which assigns the keyword closest to the centroid as the label of the cluster, disregarding key criteria such as abbreviations, understandability, uniqueness, etc.
+From the bottom 25 percentile system A ratings, it can be observed that the sub-topics chosen for retrieving news articles are unusual and not well related to the query. For example, the sub-topic \emph{Projekt} is too generic for a military query keyword such as \emph{Main Ground Combat System}. Similarly, the sub-topics \emph{March, SOSA, Operationsführung} lead to poor results as they do not effectively represent the sub-topic clusters. This pattern aligns with earlier observations where the majority of participants chose 'Not well-labeled' for the sub-topics. The sub-topic labeling is created using a centroid-based approach, which assigns the keyword closest to the centroid as the label of the cluster, disregarding key criteria such as abbreviations, understandability, uniqueness, etc.
 
 \subsection{Subtopic Retrieval Response Analysis}
 
-Participants are requested to share feedback on finding relevant documents using the proposed approach. The actual question asked in the survey is "Were the sub-topics helpful for you to find the relevant documents?". There are only two options to answer this question: 'Yes' or 'No'. The results show that around half of the participants found that the approach of retrieving documents using sub-topics does not help find news articles related to innovation.
+Participants are requested to share feedback on finding relevant documents using the proposed approach. The actual question asked in the survey is \emph{Were the sub-topics helpful for you to find the relevant documents?}. There are only two options to answer this question: "Yes" or "No". The results show that around half of the participants found that the approach of retrieving documents using sub-topics does not help find news articles related to innovation.
 
 \mycomment{One drawback of this question is that it does not specify
 	the particular IR system. This can lead the users to provide biased input during the survey.
@@ -608,7 +608,7 @@ One reason for this could be the lack of relevant documents in the database for 
 
 \subsection{Subtopic Retrieval Query Analysis}
 
-The user queries collected for the sub-topic retrieval question are analyzed and shown in \prettyref{tab:queries_question_5}. The queries are divided into two categories: 'Yes' or 'No', based on the participants' responses. It is observed that the participants have provided positive feedback for search queries related to technology. On the other hand, there are only two queries related to military, such as \emph{Main Ground Combat System} and \emph{Geoinformationen}, and they have received negative feedback. This indicates that the users are not satisfied with the retrieved results for military-related queries.
+The user queries collected for the sub-topic retrieval question are analyzed and shown in \prettyref{tab:queries_question_5}. The queries are divided into two categories: "Yes" or "No", based on the participants' responses. It is observed that the participants have provided positive feedback for search queries related to technology. On the other hand, there are only two queries related to military, such as \emph{Main Ground Combat System} and \emph{Geoinformationen}, and they have received negative feedback. This indicates that the users are not satisfied with the retrieved results for military-related queries.
 
 \begin{center}
 	\captionof{table}{Queries collected for the subtopic retrieval effectiveness.}\label{tab:queries_question_5}
@@ -672,7 +672,7 @@ Expectation scores are calculated at a specific index, indicating the number of 
 	\caption{Mean expectation score plot. \label{fig:mae_fig}}
 \end{figure}
 
-\prettyref{fig:mae_fig} presents the mean expectation score of six \ac{IR} systems across five retrieval indices. Combinational IR systems, namely IR5 and TR6, are excluded from this plot as their results were similar to IR4 and thus redundant. One notable observation from \prettyref{fig:mae_fig} is that the IR4 system, which employs template similarity, performs poorly compared to the other IR systems. The same retrieval technique is used in the survey. The remaining IR systems exhibit similar patterns and are closely related. At index 15, the IR4 system, utilizing document cardinality, demonstrates relatively better performance than the other retrieval systems.
+\prettyref{fig:mae_fig} presents the mean expectation score of six \ac{IR} systems across five retrieval indices. Combinational \ac{IR} systems, namely IR5 and TR6, are excluded from this plot as their results were similar to IR4 and thus redundant. One notable observation from \prettyref{fig:mae_fig} is that the IR4 system, which employs template similarity, performs poorly compared to the other IR systems. The same retrieval technique is used in the survey. The remaining \ac{IR} systems exhibit similar patterns and are closely related. At index 15, the IR4 system, utilizing document cardinality, demonstrates relatively better performance than the other retrieval systems.
 
 
 \begin{center}
@@ -696,7 +696,7 @@ IR7 &          0.97 &           1.85 &           2.47 &           3.18 &        
 
 \subsection{Mean Average Precision Analysis}
 
-Mean average precision (MAP) provides a concrete score for comparing different \ac{IR} systems based on the retrieved documents. Without specific index analysis, the \ac{IR} system with the highest MAP score can be identified as the best \ac{IR} system. \prettyref{tab:map_results} presents the \ac{MAP} scores of the \ac{IR} systems. Similar to the mean expectation scores, the IR3 system, which employs template similarity, performs poorly compared to other systems. Despite having the highest MAP score, the combination systems IR5 and IR6 do not demonstrate any improvement in retrieval performance. Combining multiple sub-topic rankings to generate a unified document ranking could yield more successful results, with one main reason being the need for a greater count of relevant documents.
+Mean average precision (MAP) provides a concrete score for comparing different \ac{IR} systems based on the retrieved documents. Without specific index analysis, the \ac{IR} system with the highest \ac{MAP} score can be identified as the best \ac{IR} system. \prettyref{tab:map_results} presents the \ac{MAP} scores of the \ac{IR} systems. Similar to the mean expectation scores, the IR3 system, which employs template similarity, performs poorly compared to other systems. Despite having the highest \ac{MAP} score, the combination systems IR5 and IR6 do not demonstrate any improvement in retrieval performance. Combining multiple sub-topic rankings to generate a unified document ranking could yield more successful results, with one main reason being the need for a greater count of relevant documents.
 
 
 \begin{center}
@@ -729,7 +729,7 @@ The IR7 system, utilizing random combinations of sub-topic clusters, achieves a 
 
 \subsection{Ineffectiveness of Combinational IR systems}
 
-Combinational \ac{IR} systems, namely IR5 and IR6, have shown no significant improvement in performance. From the analysis results in \prettyref{tab:mae_results} and \prettyref{tab:map_results}, the combinational systems perform equally well or lower compared to the individual systems, such as IR4, which is based on document cardinality. The poor performance is due to the ineffectiveness of the algorithm in ranking positive documents at the top of the retrieved results. Retrieval performance is directly dependent on document ranking, which can be observed through MAP or MAE. These metrics are also greatly influenced by the number of positive documents, and it has been observed that the number of positive documents in the testset is relatively low.
+Combinational \ac{IR} systems, namely IR5 and IR6, have shown no significant improvement in performance. From the analysis results in \prettyref{tab:mae_results} and \prettyref{tab:map_results}, the combinational systems perform equally well or lower compared to the individual systems, such as IR4, which is based on document cardinality. The poor performance is due to the ineffectiveness of the algorithm in ranking positive documents at the top of the retrieved results. Retrieval performance is directly dependent on document ranking, which can be observed through \ac{MAP} or \ac{ME}. These metrics are also greatly influenced by the number of positive documents, and it has been observed that the number of positive documents in the testset is relatively low.
 
 Nevertheless, the effectiveness of the algorithm in generating combinational \ac{IR} systems is evaluated by finding the unique document list generated through retrieval. To perform this analysis, two metrics are proposed: $R_s$, the number of unique sub-topic rankings, and $R_d$, the number of unique document rankings. Here, a unique ranking refers to a document or sub-topic ranking that differs from the rankings generated by the IR4 system. Generating new sub-topic and document rankings does not necessarily indicate better retrieval performance. However, it can reveal the effectiveness of the algorithm in generating new ranking patterns by combining ranking information from individual retrieval systems. These metrics are calculated as aggregate functions over 17 different queries in the testset. Therefore, the maximum possible value for these metrics is 17, and the minimum possible value is 0. Both large and small candidate pools are considered in this analysis.
 
