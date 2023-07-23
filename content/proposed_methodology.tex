@@ -11,7 +11,7 @@ One way to extract different contexts from the candidate pool is to perform clus
 	\caption{Proposed approach on an abstract level. \label{fig:methodology2}}
 \end{figure}
 
-The proposed approach, shown in \prettyref{fig:methodology2}, does not assume fixed templates or specific user intentions. The major components in the pipeline are: \emph{Candidate pool selection, Noun-chunk extraction, Automatic keyword extraction, Candidate keyword selection, Clustering, and Sub-topic creation}. The first step of this pipeline is to retrieve a candidate or retrieval pool for the given query. Subsequently, a candidate selection module is proposed to extract keywords with high diversity and low noise (stopwords). This component consists of three significant steps, namely \emph{Noun-chunk extraction, Automatic keyword extraction, and Candidate keyword selection}. Automatic keyword extraction involves extracting the most meaningful noun phrases in a text document. Specific keywords are selected and used for clustering using a percentile selection technique. This process is referred to as candidate keyword selection, and the resulting phrases after this stage are called candidate keywords. The following sections provide a detailed explanation of the above pipeline.
+The proposed approach, shown in \prettyref{fig:methodology2}, does not assume fixed templates or specific user intentions. The major components in the pipeline are: \emph{Candidate pool selection, Noun chunk extraction, Automatic keyword extraction, Candidate keyword selection, Clustering, and Sub-topic creation}. The first step of this pipeline is to retrieve a candidate or retrieval pool for the given query. Subsequently, a candidate selection module is proposed to extract keywords with high diversity and low noise (stopwords). This component consists of three significant steps, namely \emph{Noun chunk extraction, Automatic keyword extraction, and Candidate keyword selection}. Automatic keyword extraction involves extracting the most meaningful noun phrases in a text document. Specific keywords are selected and used for clustering using a percentile selection technique. This process is referred to as candidate keyword selection, and the resulting phrases after this stage are called candidate keywords. The following sections provide a detailed explanation of the above pipeline.
 
 
 
@@ -213,13 +213,13 @@ quality of the clustering output directly depends on the outcome of this step.
 
 \subsection{Noun Chunk Extraction}
 
-News-articles are very long text documents and nouns serve as essential parts of speech elements that identify people, places, or things. A noun chunk is a phrase (a group of words) that represents a noun. To automatically extract the noun chunks from each document, a library named \emph{spacy}\footnote{\url{https://spacy.io/}} is used. The noun chunks from spacy are closely analyzed, and some inconsistencies are identified that require further cleaning. A unique pipeline is proposed to clean these noun chunks, targeting the noise elements: stopwords, punctuation, determiners, duplicates, and long noun chunks.
+News articles are very long text documents and nouns serve as essential parts of speech elements that identify people, places, or things. A noun chunk is a phrase (a group of words) that represents a noun. To automatically extract the noun chunks from each document, a library named \emph{spacy}\footnote{\url{https://spacy.io/}} is used. The noun chunks from spacy are closely analyzed, and some inconsistencies are identified that require further cleaning. A unique pipeline is proposed to clean these noun chunks, targeting the noise elements: stopwords, punctuation, determiners, duplicates, and long noun chunks.
 
  
  \begin{description}
- 	\item[Remove longer Noun-chunks] \hfill \\  It has been observed in the output of spacy noun chunks that there are some  noun phrases consisting of more than three words, which mostly lack significant information. Consequently, these noun chunks are removed from the spacy output. For example, in German, the phrase \emph{"standort- und zeitunabhängigen Zusammenarbeit"} and in English, the phrase \emph{"Every successive cellular generation"}. Although there might be useful information within these long noun phrases, extracting that information is very challenging. The occurrence ratio of these phrases is relatively smaller compared to phrases with a length below 3. Therefore, these long noun phrases are filtered out from the set of noun chunks.
+ 	\item[Remove longer Noun chunks] \hfill \\  It has been observed in the output of spacy noun chunks that there are some  noun phrases consisting of more than three words, which mostly lack significant information. Consequently, these noun chunks are removed from the spacy output. For example, in German, the phrase \emph{"standort- und zeitunabhängigen Zusammenarbeit"} and in English, the phrase \emph{"Every successive cellular generation"}. Although there might be useful information within these long noun phrases, extracting that information is very challenging. The occurrence ratio of these phrases is relatively smaller compared to phrases with a length below 3. Therefore, these long noun phrases are filtered out from the set of noun chunks.
  	
- 	\item[Remove stopwords] \hfill \\  Stopwords are words that carry no significant information and are thus omitted from the noun chunks. There is no universal set of stopwords in any language, and there are also numerous types of stopwords observed in news-articles in both English and German languages. Therefore, a robust set of stopwords from various sources\footnote{\url{https://gist.github.com/sebleier/554280, https://countwordsfree.com/stopwords, https://solariz.de/de/downloads/6/german-enhanced-stopwords.htm}} has been collected in both languages. Stopwords can appear either as a complete noun chunk or as part of a noun chunk, and they are removed in either case. Stopwords generally consist of determiners, adjectives, articles, prepositions, etc.
+ 	\item[Remove stopwords] \hfill \\  Stopwords are words that carry no significant information and are thus omitted from the noun chunks. There is no universal set of stopwords in any language, and there are also numerous types of stopwords observed in news articles in both English and German languages. Therefore, a robust set of stopwords from various sources\footnote{\url{https://gist.github.com/sebleier/554280, https://countwordsfree.com/stopwords, https://solariz.de/de/downloads/6/german-enhanced-stopwords.htm}} has been collected in both languages. Stopwords can appear either as a complete noun chunk or as part of a noun chunk, and they are removed in either case. Stopwords generally consist of determiners, adjectives, articles, prepositions, etc.
  	
  	
  	\item[Remove numeric noun chunks] \hfill \\  Some noun chunks have numeric values that contain no useful information, and furthermore, it is observed that the complete noun chunk does not convey any significance either. Thus, the numeric noun chunks are removed from the noun chunks set. For example, \emph{"mehr als 50 Ländern", "1,95 m Länge", "1,5 Milliarden"} in German, etc. However, the noun chunks where the numeric value is attached to an alphabet are ignored, i.e., \emph{"4G Technology", "3D designs"} in English, etc.
@@ -291,7 +291,6 @@ News-articles are very long text documents and nouns serve as essential parts of
 			\;
 			
 		}
-		\;
 		
 		\tcp{Removing the close duplicates using recorded close\_duplicates}
 		cleaned\_noun\_chunk\_list = list(set(noun\_chunk\_list) - set(close\_duplicates))\;
@@ -304,7 +303,7 @@ News-articles are very long text documents and nouns serve as essential parts of
 
 
 \subsection{Keyword Extraction}
-The cleaned noun chunks describe a text document very well. However, not all noun chunks are of great significance in representing a document, especially in the case of a news-article. As the length of the news article is large, the size of the extracted noun chunk set can also be large. This large set of noun chunks is well-processed syntactically. It needs to be processed now semantically to select only noun chunks that can significantly influence the meaning of a text document (a news article). These crucial noun chunks in a text document are referred to as \textit{Keywords}.
+The cleaned noun chunks describe a text document very well. However, not all noun chunks are of great significance in representing a document, especially in the case of a news article. As the length of the news article is large, the size of the extracted noun chunk set can also be large. This large set of noun chunks is well-processed syntactically. It needs to be processed now semantically to select only noun chunks that can significantly influence the meaning of a text document (a news article). These crucial noun chunks in a text document are referred to as \textit{Keywords}.
 
 
 Transformer architectures compute context-aware embeddings of tokens in a sentence, considering the order and identity of the tokens. These token-level representations are further averaged to calculate sentence embeddings. However, using sentence-level embeddings as the mean of token embeddings can result in poor representations of long text documents. In news articles, it is observed that the length of the text documents is longer, and different contexts are discussed in different paragraphs. Therefore, the document is divided into multiple paragraphs, and the mean of all paragraph embeddings is considered as a "Document representation vector". In this approach, a paragraph length of 500 tokens is considered. For example, a text document with a token length of 1600 is divided into four paragraphs of lengths 500, 500, 500, and 100, respectively. The final document representation vector is the mean representation vector of these paragraph vectors. The best possible parameter for the paragraph length is not explicitly tested in this master thesis and can be considered as future work.
@@ -337,7 +336,7 @@ Once the user provides the IR system a search query $q$ and a candidate pool $CP
 \centerline{$CP_q$ = $\{D_i, D_j, D_k,\dots\}$}
 
 
-Taking one document $D_i$ into account, a set of keywords ($k$) is extracted using the above steps, namely noun chunking and automatic keyword extraction. The news-article is then transformed into a group of keywords, as expressed below.
+Taking one document $D_i$ into account, a set of keywords ($k$) is extracted using the above steps, namely noun chunking and automatic keyword extraction. The news article is then transformed into a group of keywords, as expressed below.
 
 
 \centerline{$D_i$ = $\{k_1, k_2, k_3,\dots\}$ } 
@@ -346,7 +345,7 @@ The objective of this step is to efficiently select specific keywords that are s
 
 The selection parameter considers the distribution of similarity between the query and keywords within a document. Furthermore, it should be independent of any specific document. A percentile selection criterion is adopted to avoid using a static similarity threshold. The similarity score of the $x$ percentile indicates that the score is higher than $x$ percent of the population or the similarity is lower than $100-x$ percent of the population. In the case of $cks$-based selection, only the keywords that are not similar to the query are of interest, and are therefore selected. For example, $cks$ = 60 denotes the selection of keywords with query similarity less than the 60th percentile similarity and the removal of keywords higher than the 60th percentile. Similarly, a value of $cks$ = 100 represents the selection of all keywords without any removal. 
 
-The keywords selected as the outcome of candidate keyword selection are referred to as "Candidate keywords". After candidate keyword selection process for a given user query $q$, one document  or news-article $D_i$ can be represented as a set of candidate keywords $ck$. Notably, candidate keywords are a subset of keywords.
+The keywords selected as the outcome of candidate keyword selection are referred to as "Candidate keywords". After candidate keyword selection process for a given user query $q$, one document  or news article $D_i$ can be represented as a set of candidate keywords $ck$. Notably, candidate keywords are a subset of keywords.
 
 
 \centerline{$D_i$ = $\{ck_1, ck_2, ck_3,\dots\}$ } 
@@ -361,7 +360,7 @@ The keyword selection for a given $cks$ parameter is illustrated in \prettyref{t
 		Cks parameter  &  Selected candidate keywords  \\
 		\hline
 		
-		\textbf{100}  &            All keywords are selected   \\ \hline
+		\textbf{100}  &            All keywords   \\ \hline
 		75 &            Keywords with query similarity lower than 75th percentile  \\ \hline
 		50 &            Keywords with query similarity lower than 50th percentile  \\ \hline
 		25 &            Keywords with query similarity lower than 25th percentile   \\ \hline
@@ -375,7 +374,7 @@ The keyword selection for a given $cks$ parameter is illustrated in \prettyref{t
 
 \section{Keyword Clustering}
 
-Candidate keywords from each document in the candidate pool are combined, and duplicates are removed to create a final set of candidate keywords. The combined candidate keywords set from all news-articles in the candidate pool for a query $q$ is represented as $M_q$. These keywords are further clustered using the \ac{HDBSCAN} algorithm to generate distinctive sub-topics. This stage has three main steps, namely \emph{Phrase embeddings extraction}, \emph{Dimensionality reduction}, and \emph{Hierarchical clustering}. 
+Candidate keywords from each document in the candidate pool are combined, and duplicates are removed to create a final set of candidate keywords. The combined candidate keywords set from all news articles in the candidate pool for a query $q$ is represented as $M_q$. These keywords are further clustered using the \ac{HDBSCAN} algorithm to generate distinctive sub-topics. This stage has three main steps, namely \emph{Phrase embeddings extraction}, \emph{Dimensionality reduction}, and \emph{Hierarchical clustering}. 
 
 To achieve semantic clustering, multi-lingual \ac{USE} model are used to generate phrase embeddings for each candidate keyword. These densely distributed embeddings are usually highly dimensional (512), and clustering in high-dimensional space is complex to capture patterns and can be resource-intensive. Therefore, the embeddings are compressed with the help of a dimensionality reduction technique, namely \ac{UMAP}. The dimensionality of the embeddings is reduced without losing underlying information in the data using the \ac{UMAP} algorithm~\cite{mcinnes2018umap} from the umap-learn\footnote{\url{https://pypi.org/project/umap-learn/}} library.
 

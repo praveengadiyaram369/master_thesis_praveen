@@ -75,7 +75,7 @@ The keywords selected using the $cks$ parameter are further clustered using \ac{
 \prettyref{fig:target_function_vs_csk} presents the relationship between the mean targeted negative document ratio and the $cks$ parameter. This metric indicates the separation of clusters based on their similarities. The results from the small candidate pool show the highest separation of negative documents at $cks$ = 60 and a downward trend for values of $cks$ higher than 60. This suggests that keyword selection has a positive impact on clustering, achieving better cluster separation. In contrast, the results from the large candidate pool yield different outcomes. There is a clear upward trend, implying that no keyword selection (i.e., $cks$ = 100) has resulted in better separation of clusters. However, the results from the large candidate pool do not truly represent the nature of this evaluation metric, as it ignores the unlabeled documents after clustering. Considering the labels of all 100 documents may lead to different results.
 
 \begin{center}
-	\captionof{table}[Mean of evaluation metrics for CP-30.]{Mean of evaluation metrics over the cks parameter for the small candidate pool (30).}\label{tab:top_5_smallcdd}
+	\captionof{table}[Mean of evaluation metrics for CP-30.]{Mean of evaluation metrics over the cks parameter for the small candidate pool.}\label{tab:top_5_smallcdd}
 	\begin{tabularx}{.8\textwidth}{|Y|Y|Y|Y|}
 		\hline
 		Objective function score &  Mean silhouette score &  Mean targeted negative document ratio &  Cks parameter \\
@@ -173,8 +173,8 @@ The proposed methodology clusters keywords within a document rather than cluster
 This section details the clustering performance for the top-5 parameters when considered individually. In the earlier analysis, the results are grouped over the candidate keyword selection ($cks$) parameter. \prettyref{tab:parameter_sel_small} details the hyperparameters and respective objective function scores for the small candidate pool. There is a huge variation in the "minimum samples" parameter among the top-5 results. This parameter implies the minimum number of data points in a cluster. A value of 1 signifies that a minimum of one data point can create a cluster. However, this would result in many clusters with very few data points, leading to poor clustering despite the evaluation metrics showing better performance. The change in the $cks$ parameter between the values 90, 95, and 100 might not have a significant impact on the clustering output, as the number of selected keywords lies within the 5th percentile can be very low.
 
 \begin{center}
-	\captionof{table}[Objective score analysis for CP-30.]{Objective score analysis over the parameters for the small candidate pool (30).}\label{tab:parameter_sel_small}
-	\begin{tabularx}{.8\textwidth}{|Y|Y|Y|Y|Y|}
+	\captionof{table}[Objective score analysis for CP-30.]{Objective score analysis over the parameters for the small candidate pool.}\label{tab:parameter_sel_small}
+	\begin{tabularx}{.9\textwidth}{|Y|Y|Y|Y|Y|}
 		\hline
 		 Objective function score &  Reduced dimensions &  Minimum cluster size &  Minimum samples & Cks parameter \\
 		\hline
@@ -192,8 +192,8 @@ This section details the clustering performance for the top-5 parameters when co
 
 
 \begin{center}
-	\captionof{table}[Objective score analysis for CP-100.]{Objective score analysis over the parameters for the large candidate pool (100).}\label{tab:parameter_sel_large}
-	\begin{tabularx}{.8\textwidth}{|Y|Y|Y|Y|Y|}
+	\captionof{table}[Objective score analysis for CP-100.]{Objective score analysis over the parameters for the large candidate pool.}\label{tab:parameter_sel_large}
+	\begin{tabularx}{.9\textwidth}{|Y|Y|Y|Y|Y|}
 		\hline
 		 Objective function score &  Reduced dimensions &  Minimum cluster size &  Minimum samples & Cks parameter \\
 		\hline
@@ -213,12 +213,12 @@ Comparatively, the parameters such as reduced dimensions and minimum cluster siz
 
 \begin{center}
 	\captionof{table}{Parameters selected after parameter selection analysis. }\label{tab:ideal_parameters}
-	\begin{tabularx}{.4\textwidth}{|Y|c|}
+	\begin{tabularx}{.6\textwidth}{|Y|c|}
 		\hline
 		   Parameter & Value\\
 		\hline
 		
-	        Cks parameter &          100 \\ \hline
+	       \textbf{ Cks parameter} &          \textbf{100} \\ \hline
 		       Reduced dimensions &          5 \\ \hline
          Minimum cluster size &          20 \\ \hline
 	        Minimum samples &          10 \\ \hline
@@ -234,7 +234,7 @@ After selecting the parameters by observing the clustering performance for both 
  
  \begin{center}
  	\captionof{table}[Manual clustering output analysis.]{Manual clustering output analysis for the Query "5G" with different cks parameters. }\label{tab:5G_output}
- 	\begin{tabularx}{.9\textwidth}{|c|c|Y|}
+ 	\begin{tabularx}{.99\textwidth}{|c|c|Y|}
  		\hline
  		Cks parameter & Number of cluster & Sub-topics (clusters)\\
  		\hline
@@ -270,6 +270,8 @@ The results of one query, namely "5G," are presented in \prettyref{tab:5G_output
 \prettyref{fig:target_function_vs_csk} shows a downward trend in the targeted negative document ratio at $cks$ = 60 for the small candidate pool. This signifies that there is better separation between the clusters at $cks$ = 60, and then it decreases for higher $cks$ values. However, only the larger candidate pool results are analyzed manually, rather than the small candidate pool. Despite this difference, the information from the small candidate pool can be partly helpful, as it uses the labeled information. Therefore, a 65th percentile similarity selection is chosen after a manual analysis of several queries. The results of the manual parameter selection with $cks$ = 65 are shared in \prettyref{tab:65_output}. 
 
 There are still some redundant clusters at this selection, but the results are better than with higher selection values. The choice of this particular 65th percentile selection is not only due to the heterogeneity of clusters but also to minimize the loss of documents during modeling. Similarly, an 85th percentile selection is chosen for the smaller candidate pool. The final parameters through the manual selection are presented in \prettyref{tab:manual_parameter_selection}. Furthermore, the results from the 65th percentile selection are evaluated during the survey feedback and are shared in upcoming sections.
+\\
+\\
  
  \begin{center}
  	\captionof{table}{Final parameters selected after manual analysis.}\label{tab:manual_parameter_selection}
@@ -307,7 +309,7 @@ This target function calculates the quality of separation of documents based on 
  	
 \subsection{Key Statistics from Clustering}
 
-After finalizing the parameters from \prettyref{tab:manual_parameter_selection} with a 65th percentile selection for the large candidate pool and an 85th percentile selection for the small candidate pool, an analysis is carried out on the cluster metadata. Three clustering observations are collected from the sub-topic modeling and presented in ~\prettyref{tab:keyword_analysis}. All the data presented below are calculated over 17 queries in the testset.
+After finalizing the parameters from \prettyref{tab:manual_parameter_selection} with a 65th percentile selection for the large candidate pool and an 85th percentile selection for the small candidate pool, an analysis is carried out on the cluster metadata. Three clustering observations are collected from the sub-topic modeling and presented in \prettyref{tab:keyword_analysis}. All the data presented below are calculated over 17 queries in the testset.
 
 \begin{enumerate}
 	\item \textbf{Mean number of clusters} gives the average number of clusters/sub-topics after sub-topic modeling.
@@ -330,7 +332,7 @@ After finalizing the parameters from \prettyref{tab:manual_parameter_selection} 
 	\end{tabularx}
 \end{center}
 
-It is evident from the above table that the large candidate pool considers more data points for clustering and generates around three times more sub-topics compared to the small candidate pool. This signifies that the user has the opportunity to view more diverse sub-topics and can access more documents. The average cluster size remains almost the same in both candidate pools and signifies that clustering parameters are well selected.
+It is evident from \prettyref{tab:keyword_analysis}, that the large candidate pool considers more data points for clustering and generates around three times more sub-topics compared to the small candidate pool. This signifies that the user has the opportunity to view more diverse sub-topics and can access more documents. The average cluster size remains almost the same in both candidate pools and signifies that clustering parameters are well selected.
 
  \subsection{Document Repetition Analysis}
  
@@ -384,7 +386,7 @@ This pattern observed in CP-30 does not hold true for the large candidate pool. 
 
 \section{Survey Results Evaluation}
 
-The survey aims to evaluate the clustering output and the effectiveness of sub-topics in finding relevant documents. A survey questionnaire with two unique retrieval systems and five questions is developed and evaluated by taking feedback from real users. The retrieval systems used in the survey use not only the query but also the sub-topic. The comparison is made to observe the system that represents both user inputs efficiently. A template, namely \textit{"Innovation in~\textbf{Query} and~\textbf{Sub-topic}"}, is used in both approaches to either retrieve or re-rank the news-articles. A brief description of retrieval systems A and B is shared below.
+The survey aims to evaluate the clustering output and the effectiveness of sub-topics in finding relevant documents. A survey questionnaire with two unique retrieval systems and five questions is developed and evaluated by taking feedback from real users. The retrieval systems used in the survey use not only the query but also the sub-topic. The comparison is made to observe the system that represents both user inputs efficiently. A template, namely \textit{"Innovation in~\textbf{Query} and~\textbf{Sub-topic}"}, is used in both approaches to either retrieve or re-rank the news articles. A brief description of retrieval systems A and B is shared below.
 
 \begin{description}
 	\item[System A] Retrieve new-articles using the sub-topic clustering output and then re-rank the retrieved results using template similarity.
@@ -397,7 +399,7 @@ The results from the survey directly answer the practicality of the proposed app
 
 \begin{center}
 	\captionof{table}{Summarized description of the questions asked in the survey.}\label{tab:question_summarization}
-	\begin{tabularx}{.8\textwidth}{|c|Y|}
+	\begin{tabularx}{.9\textwidth}{|c|Y|}
 		\hline
 		Question id  & Summarized description \\
 		\hline
@@ -450,11 +452,11 @@ The user feedback is further analyzed individually and shared in \prettyref{fig:
 \end{figure}
 
 
-It is evident from the above table that most of the survey participants agree with the distinctiveness of the sub-topics. Therefore, the candidate keyword selection positively impacts the clustering by creating distinctive clusters. However, the sub-topic labeling approach that uses the clusters' centroid needs to generate better results. After analyzing the sub-topic labels from \prettyref{tab:65_output} and \prettyref{tab:5G_output}, it can be observed that some of the sub-topics have abbreviations as labels. For example, DAQC, ATT, UMTS, etc., are some labels that might not be familiar to many participants and can lead to poor interpretation of the cluster and its documents.
+It is evident from \prettyref{fig:question_1_barplot}, that most of the survey participants agree with the distinctiveness of the sub-topics. Therefore, the candidate keyword selection positively impacts the clustering by creating distinctive clusters. However, the sub-topic labeling approach that uses the clusters' centroid needs to generate better results. After analyzing the sub-topic labels from \prettyref{tab:65_output} and \prettyref{tab:5G_output}, it can be observed that some of the sub-topics have abbreviations as labels. For example, DAQC, ATT, UMTS, etc., are some labels that might not be familiar to many participants and can lead to poor interpretation of the cluster and its documents.
 
 \subsection{System Comparison Response Analysis}
 
-These questions are targeted to evaluate the two IR systems developed to represent the retrieved documents. System A retrieves news-articles using the sub-topic modeling output and re-ranks them using a dynamic template, while System B retrieves news-articles with a new query request to the semantic index using the same template. Furthermore, quantitative ratings ranging from 0 to 10 are collected for both systems. Some participants have provided false inputs, and these inputs are considered anomalies. These anomaly feedback inputs for questions 2, 3, and 4 are removed from the analysis. One such feedback is observed and shared in \prettyref{tab:question_234_anamoly}. It is clear that the user has provided a lower rating for System B than for System A. However, the user has chosen System B as the better system, which clearly contradicts the individual ratings.
+These questions are targeted to evaluate the two IR systems developed to represent the retrieved documents. System A retrieves news articles using the sub-topic modeling output and re-ranks them using a dynamic template, while System B retrieves news articles with a new query request to the semantic index using the same template. Furthermore, quantitative ratings ranging from 0 to 10 are collected for both systems. Some participants have provided false inputs, and these inputs are considered anomalies. These anomaly feedback inputs for questions 2, 3, and 4 are removed from the analysis. One such feedback is observed and shared in \prettyref{tab:question_234_anamoly}. It is clear that the user has provided a lower rating for System B than for System A. However, the user has chosen System B as the better system, which clearly contradicts the individual ratings.
 
 
  \begin{center}
@@ -463,15 +465,15 @@ These questions are targeted to evaluate the two IR systems developed to represe
 		\hline
 		Which IR system is better? & System A ratings & System B ratings \\
 		\hline
-		\ac{System B} & 10 & 6.1 \\
+		\textbf{System B} & 10 & 6.1 \\
 		\hline
 	\end{tabularx}
 \end{center} 
 
-Participants are requested to answer a qualitative comparison between the two systems, and the results are shared in \prettyref{tab:question_2_results}. After removing the anomalies, it is evident from \prettyref{tab:question_2_results} that most participants have agreed that System A retrieves documents better than System B. This result is derived from the qualitative inputs of the survey. However, it is crucial to determine the significance of this result through the quantitative inputs, i.e., system ratings.
+Participants are requested to answer a qualitative comparison between the two systems, and the results are shared in \prettyref{tab:question_2_results}. After removing the anomalies, it is evident from \prettyref{tab:question_2_results} that most participants have agreed that System A retrieves documents better than System B. This result is derived from the qualitative inputs of the survey. However, it is crucial to determine the significance of this result through the quantitative inputs, i.e., system ratings.\\
 
 \begin{center}
-	\captionof{table}{Question 2, 3, and 4 results.}\label{tab:question_2_results}
+	\captionof{table}{System comparison response results.}\label{tab:question_2_results}
 	\begin{tabular}{ cc }   % top level tables, with 2 columns
 		IR system comparison  & Questions 3 and 4 \\  
 		% leftmost table of the top level table
@@ -531,11 +533,12 @@ The hypothesis is based on whether the median difference is equal to zero or not
 
 
 
-The test statistic is calculated using the python library \textit{researchpy}\footnote{\url{https://researchpy.readthedocs.io/en/latest/index.html}}. The calculated z-score is 4.06, and the test score is larger than the critical value of 1.96. Therefore, the null hypothesis is rejected, and the alternative hypothesis is accepted. This means that the system ratings are significantly different, and System A retrieves better news-articles related to the user query and the sub-topic. This concludes the system comparison by suggesting that retrieval using the sub-topic modeling output has performed better than a new query retrieval for a given query and sub-topic.
+The test statistic is calculated using the python library \textit{researchpy}\footnote{\url{https://researchpy.readthedocs.io/en/latest/index.html}}. The calculated z-score is 4.06, and the test score is larger than the critical value of 1.96. Therefore, the null hypothesis is rejected, and the alternative hypothesis is accepted. This means that the system ratings are significantly different, and System A retrieves better news articles related to the user query and the sub-topic. This concludes the system comparison by suggesting that retrieval using the sub-topic modeling output has performed better than a new query retrieval for a given query and sub-topic.
 
 \subsection{System Comparison Query Analysis}
 
-The system comparison is statistically evaluated, with the conclusion that System A represents the news-articles better based on the sub-topic clustering output. However, the mean system A ratings from the participants are around 5.46, which is not high on a scale of 10. From \prettyref{fig:histograms}, it is evident that a few responses for System A are high, while the other ratings are very low. To understand the user responses, the high and low ratings of System A are analyzed. The query and sub-topics used for System A are presented in \prettyref{tab:queries_question_234}.
+The system comparison is statistically evaluated, with the conclusion that System A represents the news articles better based on the sub-topic clustering output. However, the mean system A ratings from the participants are around 5.46, which is not high on a scale of 10. From \prettyref{fig:histograms}, it is evident that a few responses for System A are high, while the other ratings are very low. To understand the user responses, the high and low ratings of System A are analyzed. The query and sub-topics used for System A are presented in \prettyref{tab:queries_question_234}.\\
+\\
 
 \begin{center}
 	\captionof{table}{Query and sub-topic analysis for system A. }\label{tab:queries_question_234}
@@ -576,11 +579,11 @@ The system comparison is statistically evaluated, with the conclusion that Syste
 	\end{tabular}
 \end{center}
 
-From the bottom 25 percentile System A ratings, it can be observed that the sub-topics chosen for retrieving news-articles are unusual and not well related to the query. For example, the sub-topic \textit{Projekt} is too generic for a military query keyword such as \textit{Main Ground Combat System}. Similarly, the sub-topics \textit{March, SOSA, Operationsführung} lead to poor results as they do not effectively represent the sub-topic clusters. This pattern aligns with earlier observations where the majority of participants chose 'Not well-labeled' for the sub-topics. The sub-topic labeling is created using a centroid-based approach, which assigns the keyword closest to the centroid as the label of the cluster, disregarding key criteria such as abbreviations, understandability, uniqueness, etc.
+From the bottom 25 percentile System A ratings, it can be observed that the sub-topics chosen for retrieving news articles are unusual and not well related to the query. For example, the sub-topic \textit{Projekt} is too generic for a military query keyword such as \textit{Main Ground Combat System}. Similarly, the sub-topics \textit{March, SOSA, Operationsführung} lead to poor results as they do not effectively represent the sub-topic clusters. This pattern aligns with earlier observations where the majority of participants chose 'Not well-labeled' for the sub-topics. The sub-topic labeling is created using a centroid-based approach, which assigns the keyword closest to the centroid as the label of the cluster, disregarding key criteria such as abbreviations, understandability, uniqueness, etc.
 
 \subsection{Subtopic Retrieval Response Analysis}
 
-Participants are requested to share feedback on finding relevant documents using the proposed approach. The actual question asked in the survey is "Were the sub-topics helpful for you to find the relevant documents?". There are only two options to answer this question: 'Yes' or 'No'. The results show that around half of the participants found that the approach of retrieving documents using sub-topics does not help find news-articles related to innovation.
+Participants are requested to share feedback on finding relevant documents using the proposed approach. The actual question asked in the survey is "Were the sub-topics helpful for you to find the relevant documents?". There are only two options to answer this question: 'Yes' or 'No'. The results show that around half of the participants found that the approach of retrieving documents using sub-topics does not help find news articles related to innovation.
 
 \mycomment{One drawback of this question is that it does not specify
 	the particular IR system. This can lead the users to provide biased input during the survey.
@@ -765,7 +768,7 @@ Nevertheless, the effectiveness of the algorithm in generating combinational \ac
 
 
 
-The proposed approach in this master thesis is compared against the literature, which is detailed in Section 6.6.3. Three retrieval techniques are considered to create candidate documents for re-ranking, and two ranking approaches are used to generate the final ranking list of news-articles. To evaluate the performance of retrieval, mean average precision (MAP) is used, and a higher score signifies better retrieval performance of the IR system. From \prettyref{tab:map_results}, it is evident that IR4, the system that uses document cardinality for sub-topic ranking and query similarity for document ranking, has shown the best results. The same system is used for sub-topic retrieval and compared with the cross-encoder ranking. \prettyref{tab:literature_results} shows the evaluation results of the proposed approach compared to the literature.
+The proposed approach in this master thesis is compared against the literature, which is detailed in Section 6.6.3. Three retrieval techniques are considered to create candidate documents for re-ranking, and two ranking approaches are used to generate the final ranking list of news articles. To evaluate the performance of retrieval, mean average precision (MAP) is used, and a higher score signifies better retrieval performance of the IR system. From \prettyref{tab:map_results}, it is evident that IR4, the system that uses document cardinality for sub-topic ranking and query similarity for document ranking, has shown the best results. The same system is used for sub-topic retrieval and compared with the cross-encoder ranking. \prettyref{tab:literature_results} shows the evaluation results of the proposed approach compared to the literature.\pagebreak
 
 \begin{center}
 	\captionof{table}{Literature comparison results.}\label{tab:literature_results}
@@ -793,7 +796,7 @@ The proposed approach in this master thesis is compared against the literature, 
 
 It is observed that the sub-topic retrieval, along with the candidate pool retrieval, has performed the best out of all scenarios with a \ac{MAP} score of 0.265. Moreover, the cross-encoder ranking approach has achieved the best \ac{MAP} score when the candidate pool is used at the retrieval stage. This clearly shows that a candidate pool, which is a mixture of lexical and semantic matching, has generated better results than the other retrieval techniques. In this master thesis, efforts are made to select the significant candidate document set using an optimized candidate pool selection strategy. The \ac{MAP} score of the sub-topic retrieval approach with document cardinality and query similarity from \prettyref{tab:literature_results} is lower than in \prettyref{tab:map_results}. The reason for this difference, despite the usage of the exact approach, is the candidate pool. In the literature comparison, a large candidate pool of 100 documents is used rather than the small candidate pool.
 
-On the other hand, the cross-encoder ranking technique showed better retrieval performance in the case of BM-25 and bi-encoder retrieval output. This shows that the overall performance of the cross-encoder is better than sub-topic retrieval. However, in the case of sub-topic retrieval, the user can access the news-articles from a certain topic easily with a single click. In order to extract diverse sub-topics and access several news-articles, a large candidate pool retrieval is suggested with sub-topic retrieval. The effectiveness of the cross-encoder can be used within sub-topic retrieval. For example, the document ranking in sub-topic retrieval can possibly be replaced with cross-encoder ranking instead of query similarity ranking.
+On the other hand, the cross-encoder ranking technique showed better retrieval performance in the case of BM-25 and bi-encoder retrieval output. This shows that the overall performance of the cross-encoder is better than sub-topic retrieval. However, in the case of sub-topic retrieval, the user can access the news articles from a certain topic easily with a single click. In order to extract diverse sub-topics and access several news articles, a large candidate pool retrieval is suggested with sub-topic retrieval. The effectiveness of the cross-encoder can be used within sub-topic retrieval. For example, the document ranking in sub-topic retrieval can possibly be replaced with cross-encoder ranking instead of query similarity ranking.
 
 
  
